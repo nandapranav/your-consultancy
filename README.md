@@ -1,6 +1,12 @@
-# Your Consultancy — Demo
+# Fifth Cursor — AI × Cloud Consultancy Demo
 
-Premium AI × Cloud consultancy website built with React + Vite.
+Premium React + Vite consultancy site with:
+- Fifth Cursor vector logo based on the supplied logo reference
+- AI and cloud consultancy positioning
+- Clickable capability arrows with dedicated detail pages
+- AI-generated demo service content in `src/config.js`
+- Responsive layout and mobile navigation
+- Cloudflare Pages SPA fallback via `public/_redirects`
 
 ## Run locally
 
@@ -9,30 +15,28 @@ npm install
 npm run dev
 ```
 
-Then open the local URL Vite gives you.
+## Build
+
+```bash
+npm run build
+```
+
+## Cloudflare
+
+Build command: `npm run build`
+
+Output directory: `dist`
+
+Root directory: `/`
+
+If using a Wrangler deploy command in Cloudflare's build configuration, use:
+
+```bash
+npx wrangler pages deploy dist --project-name=YOUR_CLOUDFLARE_PROJECT_NAME
+```
+
+The project name must match the Pages project exactly and the Cloudflare API token must have permission to deploy to that Pages project.
 
 ## Customize
 
-Most demo content lives in `src/config.js`.
-
-Change:
-- consultancy name
-- email
-- hero copy
-- services
-- case studies
-- process
-- technologies
-- insights
-
-Visual styles are in `src/styles.css`.
-
-## Cloudflare Pages
-
-1. Push this project to GitHub.
-2. In Cloudflare Pages, create a project from the repository.
-3. Build command: `npm run build`
-4. Output directory: `dist`
-5. Deploy.
-
-No server is required for this demo.
+Edit `src/config.js` to change the brand, email, hero copy, services, service detail content, case studies, technology stack, process, and insights.
