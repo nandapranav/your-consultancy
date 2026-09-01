@@ -2,7 +2,7 @@ export const siteConfig = {
   brand: {
     name: "Fifth Cursor",
     eyebrow: "AI × CLOUD CONSULTANCY",
-    email: "hello@fifthcursor.com"
+    email: "info@fifthcursor.com"
   },
   hero: {
     title: "Build what’s next.",
