@@ -76,11 +76,188 @@ function Home() {
   </>;
 }
 
+
 function CapabilityPage({ service }) {
   return <main className="detailPage">
-    <section className="detailHero"><div className="sectionKicker">CAPABILITY / {service.id}</div><h1>{service.title}</h1><p>{service.intro}</p><div className="tags">{service.tags.map(t => <span key={t}>{t}</span>)}</div></section>
-    <section className="detailBody"><div><div className="sectionKicker">WHAT WE DO</div><h2>From strategy to<br /><span>production impact.</span></h2></div><div className="detailList">{service.details.map((d, i) => <div className="detailItem" key={d}><span>0{i + 1}</span><p>{d}</p></div>)}<a className="primary" href={`mailto:${c.brand.email}?subject=${encodeURIComponent(service.title + " inquiry")}`}>Talk to Fifth Cursor</a></div></section>
-    <section className="detailBand"><div className="sectionKicker">WHY FIFTH CURSOR</div><h2>Technical depth.<br /><span>Business context.</span></h2><p>We stay close to the real system: architecture, implementation, trade-offs, and the people who have to operate it after launch.</p></section>
+
+    {/* HERO */}
+    <section className="detailHero">
+      <div className="sectionKicker">CAPABILITY / {service.id}</div>
+      <h1>{service.title}</h1>
+      <p>{service.intro}</p>
+      <div className="tags">
+        {service.tags.map(t => <span key={t}>{t}</span>)}
+      </div>
+    </section>
+
+    {/* OVERVIEW */}
+    <section className="detailBody">
+      <div>
+        <div className="sectionKicker">THE BIG PICTURE</div>
+        <h2>Technology should<br /><span>create leverage.</span></h2>
+      </div>
+
+      <div className="detailList">
+        <div className="detailItem">
+          <span>01</span>
+          <p>{service.overview}</p>
+        </div>
+
+        <div className="detailItem">
+          <span>02</span>
+          <p>{service.challenge}</p>
+        </div>
+      </div>
+    </section>
+
+    {/* CHALLENGES */}
+    <section className="detailBody">
+      <div>
+        <div className="sectionKicker">THE CHALLENGE</div>
+        <h2>Why this<br /><span>matters now.</span></h2>
+      </div>
+
+      <div className="detailList">
+        {service.challenges.map(([title, text], i) => (
+          <div className="detailItem" key={title}>
+            <span>{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* WHAT WE DO */}
+    <section className="detailBody">
+      <div>
+        <div className="sectionKicker">WHAT WE DO</div>
+        <h2>From strategy to<br /><span>production impact.</span></h2>
+      </div>
+
+      <div className="detailList">
+        {service.details.map((d, i) => (
+          <div className="detailItem" key={d}>
+            <span>{String(i + 1).padStart(2, "0")}</span>
+            <p>{d}</p>
+          </div>
+        ))}
+
+        <a
+          className="primary"
+          href={`mailto:${c.brand.email}?subject=${encodeURIComponent(service.title + " inquiry")}`}
+        >
+          Talk to Fifth Cursor
+        </a>
+      </div>
+    </section>
+
+    {/* CAPABILITIES */}
+    <section className="detailBody">
+      <div>
+        <div className="sectionKicker">OUR EXPERTISE</div>
+        <h2>Where we<br /><span>can help.</span></h2>
+      </div>
+
+      <div className="detailList">
+        {service.capabilities.map(([title, text], i) => (
+          <div className="detailItem" key={title}>
+            <span>{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* APPROACH */}
+    <section className="detailBody">
+      <div>
+        <div className="sectionKicker">OUR APPROACH</div>
+        <h2>A practical path<br /><span>forward.</span></h2>
+      </div>
+
+      <div className="detailList">
+        {service.approach.map(([number, title, text]) => (
+          <div className="detailItem" key={number}>
+            <span>{number}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* DELIVERABLES */}
+    <section className="detailBody">
+      <div>
+        <div className="sectionKicker">WHAT YOU GET</div>
+        <h2>Concrete outputs.<br /><span>Not just advice.</span></h2>
+      </div>
+
+      <div className="detailList">
+        {service.deliverables.map((item, i) => (
+          <div className="detailItem" key={item}>
+            <span>{String(i + 1).padStart(2, "0")}</span>
+            <p>{item}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* OUTCOMES */}
+    <section className="detailBody">
+      <div>
+        <div className="sectionKicker">THE OUTCOME</div>
+        <h2>What changes<br /><span>for your business.</span></h2>
+      </div>
+
+      <div className="detailList">
+        {service.outcomes.map((item, i) => (
+          <div className="detailItem" key={item}>
+            <span>✓</span>
+            <p>{item}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* WHY FIFTH CURSOR */}
+    <section className="detailBand">
+      <div className="sectionKicker">WHY FIFTH CURSOR</div>
+      <h2>Technical depth.<br /><span>Business context.</span></h2>
+      <p>
+        We stay close to the real system: architecture, implementation,
+        trade-offs, and the people who have to operate it after launch.
+        Our role is not to create another strategy document that sits on a shelf.
+        We work with teams to turn difficult technology decisions into practical
+        systems, clearer priorities, and measurable outcomes.
+      </p>
+    </section>
+
+    {/* FINAL CTA */}
+    <section className="contact">
+      <div className="contactGlow" />
+      <div className="sectionKicker">START HERE</div>
+      <h2>Have a hard<br /><em>problem?</em></h2>
+      <p>
+        Tell us what you're trying to build, fix, modernize, automate, or figure out.
+        We'll bring the right people to the conversation.
+      </p>
+      <a
+        className="primary"
+        href={`mailto:${c.brand.email}?subject=${encodeURIComponent(service.title + " inquiry")}`}
+      >
+        Start a conversation
+      </a>
+    </section>
+
   </main>;
 }
 
