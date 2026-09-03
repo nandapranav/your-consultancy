@@ -529,26 +529,32 @@ function App() {
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
-    const onPop = () => {
+    const handlePopState = () => {
       setPath(window.location.pathname);
       setMobile(false);
     };
 
-    window.addEventListener("popstate", onPop);
+    window.addEventListener("popstate", handlePopState);
 
-    return () =>
-      window.removeEventListener("popstate", onPop);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
   }, []);
 
-  const match = path.match(
-    /^\/capabilities\/([^/]+)\/?$/
-  );
+  const normalizedPath =
+    path.replace(/\/+$/, "") || "/";
 
-  const CapabilityComponent = match
-    ? capabilityPages[match[1]]
+  const capabilitySlug = normalizedPath.startsWith(
+    "/capabilities/"
+  )
+    ? normalizedPath.replace("/capabilities/", "")
     : null;
 
-  const isDetail = Boolean(CapabilityComponent);
+  const CapabilityComponent = capabilitySlug
+    ? capabilityPages[capabilitySlug]
+    : null;
+
+  const isCapabilityPage = Boolean(CapabilityComponent);
 
   return (
     <div className="app">
@@ -564,7 +570,7 @@ function App() {
         />
       )}
 
-      {isDetail ? (
+      {isCapabilityPage ? (
         <CapabilityComponent />
       ) : (
         <main id="top">
@@ -583,13 +589,17 @@ function App() {
         </div>
 
         <div className="footerLinks">
-          <span>© 2026 {c.brand.name}</span>
+          <span>
+            © 2026 {c.brand.name}
+          </span>
 
           <a href={`mailto:${c.brand.email}`}>
             {c.brand.email}
           </a>
 
-          <span>Built for what’s next.</span>
+          <span>
+            Built for what’s next.
+          </span>
         </div>
       </footer>
     </div>
