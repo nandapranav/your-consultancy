@@ -1,0 +1,30 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fifth Cursor logo</title>
+  <desc id="desc">A central F surrounded by a green ring and blue-green radial cursor nodes.</desc>
+  <rect width="800" height="800" fill="#fff"/>
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#2d819e" stroke-width="13">
+      <path d="M400 274L400 175"/><path d="M426 276L451 185"/><path d="M448 286L503 213"/><path d="M469 302L546 256"/>
+      <path d="M474 326L568 312"/><path d="M476 351L590 365"/><path d="M472 375L569 408"/><path d="M459 400L544 456"/>
+      <path d="M442 419L493 491"/><path d="M418 429L438 526"/><path d="M392 431L386 535"/><path d="M366 426L339 516"/>
+      <path d="M342 413L289 489"/><path d="M321 396L243 445"/><path d="M309 371L213 391"/><path d="M306 345L198 337"/>
+      <path d="M311 319L217 286"/><path d="M322 296L247 247"/><path d="M342 281L289 205"/><path d="M368 272L343 178"/>
+    </g>
+    <g stroke="#23819e" stroke-width="9">
+      <path d="M409 275L414 156"/><path d="M434 281L478 173"/><path d="M458 297L528 231"/><path d="M473 320L575 284"/>
+      <path d="M476 345L600 339"/><path d="M475 370L592 395"/><path d="M463 394L548 451"/><path d="M448 415L493 503"/>
+      <path d="M424 427L437 541"/><path d="M398 430L397 553"/><path d="M374 426L354 530"/><path d="M349 414L304 502"/>
+      <path d="M329 397L254 462"/><path d="M314 376L220 414"/><path d="M306 351L192 353"/><path d="M307 327L204 298"/>
+      <path d="M316 305L237 254"/><path d="M333 288L282 194"/><path d="M356 278L330 174"/>
+    </g>
+  </g>
+  <g fill="#2d819e">
+    <circle cx="400" cy="146" r="34"/><circle cx="479" cy="166" r="27"/><circle cx="538" cy="222" r="22"/><circle cx="579" cy="284" r="24"/>
+    <circle cx="607" cy="343" r="31"/><circle cx="573" cy="401" r="20"/><circle cx="531" cy="454" r="25"/><circle cx="493" cy="507" r="25"/>
+    <circle cx="437" cy="547" r="24"/><circle cx="352" cy="540" r="33"/><circle cx="297" cy="499" r="22"/><circle cx="240" cy="451" r="26"/>
+    <circle cx="196" cy="388" r="34"/><circle cx="207" cy="321" r="22"/><circle cx="247" cy="252" r="23"/><circle cx="288" cy="202" r="31"/><circle cx="339" cy="167" r="22"/>
+  </g>
+  <circle cx="400" cy="350" r="104" fill="#fff" stroke="#63c77a" stroke-width="13"/>
+  <text x="400" y="394" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="700" fill="#277c98">F</text>
+  <text x="400" y="660" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="700" letter-spacing="9" fill="#277c98">FIFTH CURSOR</text>
+</svg>
