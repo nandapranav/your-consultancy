@@ -1,0 +1,18 @@
+<svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Fifth Cursor</title>
+  <desc id="desc">Fifth Cursor horizontal logo with the radial cursor mark and wordmark.</desc>
+  <g transform="translate(8 8) scale(.92)">
+    <g fill="none" stroke-linecap="round" stroke-width="7">
+      <path d="M110 78L110 24M125 80L145 29M140 86L174 45M151 98L196 72M157 112L212 108M158 126L207 139M151 139L191 168M140 151L166 191M125 158L130 205M109 160L105 211M94 157L77 198M80 149L47 186M69 137L25 159M63 121L10 124M63 104L12 92M70 91L28 65M81 82L49 39M95 77L83 27" stroke="#2d819e"/>
+    </g>
+    <g fill="#2d819e">
+      <circle cx="110" cy="18" r="17"/><circle cx="147" cy="27" r="13"/><circle cx="180" cy="45" r="11"/><circle cx="209" cy="70" r="12"/>
+      <circle cx="218" cy="108" r="16"/><circle cx="203" cy="141" r="10"/><circle cx="177" cy="171" r="12"/><circle cx="166" cy="196" r="12"/>
+      <circle cx="130" cy="213" r="12"/><circle cx="74" cy="205" r="16"/><circle cx="43" cy="185" r="11"/><circle cx="12" cy="159" r="13"/>
+      <circle cx="4" cy="123" r="17"/><circle cx="9" cy="91" r="11"/><circle cx="28" cy="64" r="12"/><circle cx="49" cy="38" r="15"/><circle cx="83" cy="27" r="11"/>
+    </g>
+    <circle cx="110" cy="110" r="52" fill="#fff" stroke="#63c77a" stroke-width="7"/>
+    <text x="110" y="133" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="57" font-weight="700" fill="#277c98">F</text>
+  </g>
+  <text x="270" y="143" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="700" letter-spacing="9" fill="#277c98">FIFTH CURSOR</text>
+</svg>
