@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fifth Cursor — AI × Cloud Consultancy</title>
+<meta name="description" content="Your Consultancy — AI and cloud strategy, architecture, and engineering.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#f5f4ef;--ink:#0b0c0e;--muted:#777873;--line:#d8d7d0;--accent:#b7f000;--dark:#0b0d0f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+.app{overflow:hidden;min-height:100vh}
+.grain{pointer-events:none;position:fixed;inset:0;opacity:.035;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+button,a{font:inherit}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid var(--line);position:absolute;top:0;left:0;right:0;z-index:10;background:rgba(245,244,239,.65);backdrop-filter:blur(14px)}
+.brandButton{border:0;background:none;padding:0;cursor:pointer}
+.brandLogo{display:block;width:180px;height:auto}
+.nav nav{display:flex;gap:32px}
+.nav nav a,.ghost{border:0;background:none;cursor:pointer;color:#5f605c;font-size:13px;text-decoration:none}
+.nav nav a:hover,.ghost:hover{color:var(--ink)}
+.navCta,.primary{border:0;cursor:pointer;display:inline-flex;gap:9px;align-items:center;text-decoration:none}
+.navCta{padding:12px 17px;background:var(--ink);color:white;border-radius:100px;font-size:13px}
+.menu{display:none;background:none;border:0;cursor:pointer}
+.hero{min-height:850px;padding:170px 8vw 100px;position:relative;display:flex;align-items:center}
+.heroCopy{max-width:650px;position:relative;z-index:2}
+.eyebrow,.sectionKicker{font:500 10px "DM Mono",monospace;letter-spacing:.13em;color:#666862}
+.eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:25px}
+.eyebrow span{width:6px;height:6px;background:var(--accent);border-radius:50%}
+.hero h1{font-size:clamp(65px,8vw,125px);line-height:.87;letter-spacing:-.075em;margin:0 0 32px;font-weight:800}
+.hero h1 em,.section h2 span,.approachTitle i,.contact em,.techSection h2 span{font-style:normal;color:#7c8077}
+.hero p{font-size:18px;line-height:1.65;max-width:560px;color:#666761}
+.heroActions{display:flex;gap:25px;align-items:center;margin-top:35px}
+.primary{background:var(--ink);color:#fff;padding:15px 20px;border-radius:4px}
+.ghost{display:inline-flex;align-items:center}
+.systemVisual{position:absolute;right:4vw;width:45vw;height:650px;max-width:700px}
+.ring{position:absolute;border:1px solid rgba(11,12,14,.14);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);animation:spin 18s linear infinite}
+.r1{width:250px;height:250px}.r2{width:430px;height:430px;animation-direction:reverse;animation-duration:28s}.r3{width:610px;height:610px;animation-duration:38s}
+.visualCore{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:#111;color:white;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;box-shadow:0 20px 70px #0002}
+.visualCore svg{color:var(--accent)}
+.visualCore span{font:500 8px "DM Mono";letter-spacing:.14em}
+.node{position:absolute;z-index:4;background:var(--bg);border:1px solid var(--line);padding:8px 11px;font:500 9px "DM Mono";letter-spacing:.08em;box-shadow:0 8px 25px #0000000c}
+.node span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:7px}
+.n0{top:24%;left:19%}.n1{top:32%;right:8%}.n2{bottom:25%;right:22%}.n3{bottom:20%;left:15%}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.scrollHint{position:absolute;bottom:28px;left:8vw;font:500 9px "DM Mono";color:#898a84;letter-spacing:.1em}
+.scrollHint span{margin-left:15px}
+.ticker{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.ticker>div{display:flex;justify-content:space-around;min-width:900px;padding:18px 0;font:500 10px "DM Mono";letter-spacing:.14em}
+.ticker b{color:#8f8f87;margin-left:40px}
+.section{padding:150px 8vw}
+.intro{display:grid;grid-template-columns:1fr 2.3fr;gap:8vw}
+.introRight h2,.sectionHead h2,.techSection h2{font-size:clamp(45px,6vw,85px);line-height:.95;letter-spacing:-.065em;margin:0 0 30px}
+.introRight p{font-size:17px;line-height:1.75;max-width:700px;color:#6c6d67}
+.sectionHead{display:flex;justify-content:space-between;align-items:end;margin-bottom:60px}
+.sectionHead>p{color:#777873;max-width:280px;line-height:1.6;font-size:14px}
+.serviceGrid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}
+.service{padding:30px 25px 40px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);min-height:285px}
+.service:nth-child(even){border-right:0}
+.serviceTop{display:flex;justify-content:space-between;color:#969790;font:11px "DM Mono"}
+.serviceArrow{width:42px;height:42px;border:1px solid transparent;background:transparent;color:#858781;border-radius:50%;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.2s;text-decoration:none}
+.serviceArrow:hover{background:var(--ink);color:var(--accent);transform:translateY(-2px)}
+.service h3{font-size:27px;letter-spacing:-.04em;margin:48px 0 13px}
+.service p{color:#73746e;line-height:1.6;max-width:480px;font-size:14px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}
+.tags span{border:1px solid #d0d0c8;border-radius:100px;padding:6px 9px;font:9px "DM Mono";color:#74756f}
+.capabilityLinks{border-top:1px solid var(--line);margin-top:16px}
+.capabilityLink{display:flex;justify-content:space-between;align-items:center;padding:24px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:.2s}
+.capabilityLink:hover{padding-left:14px}
+.capabilityLink small{display:block;font:9px "DM Mono";letter-spacing:.1em;color:#8b8d86;margin-bottom:6px}
+.capabilityLink strong{font-size:22px;letter-spacing:-.03em;font-weight:600}
+.capabilityLink .arrow{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:#858781;transition:.2s;flex:none}
+.capabilityLink:hover .arrow{background:var(--ink);color:var(--accent);border-color:var(--ink)}
+.darkSection{background:var(--dark);color:white;padding:150px 8vw}
+.darkSection .sectionKicker{color:#7f827a}
+.approachTitle{display:grid;grid-template-columns:1.4fr 1fr;gap:12vw;margin:55px 0 85px}
+.approachTitle h2{font-size:clamp(55px,7vw,100px);line-height:.88;letter-spacing:-.07em;margin:0}
+.approachTitle p{color:#999b96;line-height:1.7;max-width:450px}
+.process{border-top:1px solid #ffffff22}
+.step{display:grid;grid-template-columns:100px 1fr;gap:25px;padding:29px 0;border-bottom:1px solid #ffffff22;align-items:center}
+.stepNum{font:10px "DM Mono";color:#757871}
+.step h3{margin:0 0 8px;font-size:21px}
+.step p{margin:0;color:#8e918a;font-size:13px}
+.filters{display:flex;gap:7px}
+.filters button{border:1px solid var(--line);background:none;border-radius:100px;padding:8px 12px;font:9px "DM Mono";cursor:pointer;color:#777}
+.filters .active{background:var(--ink);border-color:var(--ink);color:white}
+.caseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.case{background:#eeece5}
+.case.hidden{display:none}
+.caseArt{height:370px;position:relative;overflow:hidden;background:linear-gradient(135deg,#151718,#343631)}
+.caseLines{position:absolute;inset:-40%;background:repeating-linear-gradient(125deg,transparent 0 34px,#ffffff12 35px 36px);transform:rotate(12deg)}
+.caseLabel{position:absolute;top:20px;left:20px;color:#b7f000;font:9px "DM Mono";letter-spacing:.12em}
+.caseMetric{position:absolute;bottom:22px;left:20px;color:white;display:flex;flex-direction:column}
+.caseMetric b{font-size:65px;letter-spacing:-.07em;line-height:.9}
+.caseMetric small{font:9px "DM Mono";color:#bbb}
+.caseBody{padding:25px}
+.caseBody h3{font-size:23px;letter-spacing:-.04em;margin:0 0 10px}
+.caseBody p{font-size:13px;color:#777873;line-height:1.55;min-height:42px}
+.caseFoot{border-top:1px solid #d3d1ca;padding-top:15px;font:9px "DM Mono";color:#777873}
+.techSection{background:#deddd6;padding:145px 8vw;text-align:center}
+.techSection .sectionKicker{display:block}
+.techSection h2{margin-top:35px}
+.techSection>p{color:#777873;margin:-5px auto 55px}
+.techCloud{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:850px;margin:auto}
+.techCloud span{padding:14px 19px;border:1px solid #c4c3bc;border-radius:100px;font-size:13px;background:#e6e5de}
+.insightGrid{border-top:1px solid var(--line)}
+.insight{display:grid;grid-template-columns:160px 1fr;gap:30px;padding:29px 0;border-bottom:1px solid var(--line);align-items:center}
+.insight>div{display:flex;flex-direction:column;gap:8px;font:9px "DM Mono"}
+.insight>div span{color:#73746d}
+.insight>div small{color:#999}
+.insight h3{font-size:25px;letter-spacing:-.04em;margin:0}
+.contact{background:var(--ink);color:white;min-height:680px;padding:120px 8vw;position:relative;overflow:hidden}
+.contact .sectionKicker{color:#777a73}
+.contact h2{font-size:clamp(70px,10vw,145px);letter-spacing:-.08em;line-height:.82;margin:55px 0 30px;position:relative;z-index:2}
+.contact p{color:#999c95;max-width:480px;line-height:1.7;position:relative;z-index:2}
+.contact .primary{margin-top:30px;position:relative;z-index:2}
+.contactGlow{position:absolute;width:500px;height:500px;border-radius:50%;right:-100px;top:100px;background:radial-gradient(circle,#b7f00022,transparent 65%);filter:blur(15px)}
+footer{background:#080909;color:#eee;padding:38px 8vw;display:flex;justify-content:space-between;align-items:center}
+.footerBrand{display:flex;align-items:center;gap:12px}
+.footerBrand .brandLogo{width:150px;height:auto}
+.footerBrand>div{display:flex;flex-direction:column}
+.footerBrand small{font:8px "DM Mono";color:#70736d;margin-top:3px}
+.footerLinks{display:flex;gap:28px;color:#777;align-items:center;font:9px "DM Mono"}
+.footerLinks a{color:#aaa;text-decoration:none}
+.mobileNav{display:none}
+@media(max-width:900px){
+.nav nav,.navCta{display:none}
+.menu{display:block}
+.mobileNav.open{display:flex;position:fixed;z-index:9;top:76px;left:0;right:0;background:var(--bg);padding:25px 8vw;flex-direction:column;gap:20px;border-bottom:1px solid var(--line)}
+.mobileNav a{background:none;border:0;text-align:left;font-size:18px;color:var(--ink);text-decoration:none}
+.hero{padding:150px 7vw 90px;min-height:900px}
+.systemVisual{opacity:.32;right:-35vw;width:85vw}
+.heroCopy{max-width:650px}
+.hero h1{font-size:clamp(62px,16vw,105px)}
+.intro,.approachTitle{grid-template-columns:1fr;gap:35px}
+.section,.darkSection,.techSection{padding:100px 7vw}
+.sectionHead{display:block}
+.sectionHead>p{margin-top:25px}
+.serviceGrid,.caseGrid{grid-template-columns:1fr}
+.service{border-right:0}
+.caseArt{height:320px}
+.filters{margin-top:30px;overflow:auto}
+.insight{grid-template-columns:1fr}
+.insight>div{display:none}
+.insight h3{font-size:20px}
+.footerLinks{flex-direction:column;align-items:flex-end;gap:10px}
+.contact{padding:100px 7vw;min-height:600px}
+.capabilityLink strong{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="grain"></div>
+<header class="nav">
+  <button class="brandButton" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Fifth Cursor home">
+    <img class="brandLogo" src="/fifth-cursor-horizontal.svg" alt="Fifth Cursor">
+  </button>
+  <nav>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#approach">Approach</a>
+    <a href="#work">Work</a>
+    <a href="#insights">Insights</a>
+  </nav>
+  <a class="navCta" href="mailto:info@fifthcursor.com">Let's talk</a>
+  <button class="menu" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Open navigation">☰</button>
+</header>
+
+<div class="mobileNav" id="mobileNav">
+  <a href="#capabilities" onclick="document.getElementById('mobileNav').classList.remove('open')">Capabilities</a>
+  <a href="#approach" onclick="document.getElementById('mobileNav').classList.remove('open')">Approach</a>
+  <a href="#work" onclick="document.getElementById('mobileNav').classList.remove('open')">Work</a>
+  <a href="#insights" onclick="document.getElementById('mobileNav').classList.remove('open')">Insights</a>
+  <a href="mailto:info@fifthcursor.com">Let's talk</a>
+</div>
+
+<main id="top">
+<section class="hero">
+  <div class="heroCopy">
+    <div class="eyebrow"><span></span> AI × CLOUD CONSULTANCY</div>
+    <h1>Build what's next.<br><em>Intelligently.</em></h1>
+    <p>We help ambitious teams turn AI and cloud into durable competitive advantage — from strategy and architecture to production.</p>
+    <div class="heroActions">
+      <a class="primary" href="mailto:info@fifthcursor.com">Start a conversation</a>
+      <a class="ghost" href="#capabilities">Explore capabilities</a>
+    </div>
+  </div>
+  <div class="systemVisual">
+    <div class="visualCore"><span>INTELLIGENCE</span></div>
+    <div class="node n0"><span></span>AI</div>
+    <div class="node n1"><span></span>CLOUD</div>
+    <div class="node n2"><span></span>DATA</div>
+    <div class="node n3"><span></span>AUTOMATION</div>
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+  </div>
+  <div class="scrollHint">SCROLL TO EXPLORE</div>
+</section>
+
+<section class="ticker">
+  <div>
+    <span>STRATEGY <b>✦</b></span>
+    <span>ARCHITECTURE <b>✦</b></span>
+    <span>ENGINEERING <b>✦</b></span>
+    <span>AI SYSTEMS <b>✦</b></span>
+    <span>CLOUD <b>✦</b></span>
+    <span>AUTOMATION <b>✦</b></span>
+    <span>DATA <b>✦</b></span>
+  </div>
+</section>
+
+<section class="section intro">
+  <div class="sectionKicker">01 / THE FOCUS</div>
+  <div class="introRight">
+    <h2>Technology should create <span>momentum.</span><br>Not complexity.</h2>
+    <p>We partner with teams at the point where ambitious ideas meet hard technical problems. Our work sits at the intersection of artificial intelligence, cloud engineering, and the business outcomes they unlock.</p>
+  </div>
+</section>
+
+<section id="capabilities" class="section">
+  <div class="sectionHead">
+    <div>
+      <div class="sectionKicker">02 / CAPABILITIES</div>
+      <h2>Built for the<br><span>hard problems.</span></h2>
+    </div>
+    <p>Focused expertise. Senior thinking. Hands-on delivery.</p>
+  </div>
+
+  <div class="serviceGrid">
+    <article class="service">
+      <div class="serviceTop"><span>01</span><a class="serviceArrow" href="/capabilities/ai-strategy-transformation.html" aria-label="Learn more about AI Strategy & Transformation"><span aria-hidden="true">↗</span></a></div>
+      <h3>AI Strategy & Transformation</h3>
+      <p>Identify the AI opportunities worth pursuing, define the operating model, and turn experimentation into an executable roadmap.</p>
+      <div class="tags"><span>AI strategy</span><span>GenAI</span><span>Roadmaps</span></div>
+    </article>
+    <article class="service">
+      <div class="serviceTop"><span>02</span><a class="serviceArrow" href="/capabilities/cloud-architecture.html" aria-label="Learn more about Cloud Architecture"><span aria-hidden="true">↗</span></a></div>
+      <h3>Cloud Architecture</h3>
+      <p>Design secure, scalable cloud platforms that are built for real workloads, not slide decks.</p>
+      <div class="tags"><span>AWS</span><span>Azure</span><span>GCP</span></div>
+    </article>
+    <article class="service">
+      <div class="serviceTop"><span>03</span><a class="serviceArrow" href="/capabilities/ai-engineering.html" aria-label="Learn more about AI Engineering"><span aria-hidden="true">↗</span></a></div>
+      <h3>AI Engineering</h3>
+      <p>Move from prototype to production with intelligent applications, agents, retrieval systems, and evaluation pipelines.</p>
+      <div class="tags"><span>Agents</span><span>RAG</span><span>MLOps</span></div>
+    </article>
+    <article class="service">
+      <div class="serviceTop"><span>04</span><a class="serviceArrow" href="/capabilities/modernization-migration.html" aria-label="Learn more about Modernization & Migration"><span aria-hidden="true">↗</span></a></div>
+      <h3>Modernization & Migration</h3>
+      <p>Untangle legacy systems and create a pragmatic path toward faster, more resilient infrastructure.</p>
+      <div class="tags"><span>Migration</span><span>Kubernetes</span><span>Platform</span></div>
+    </article>
+    <article class="service">
+      <div class="serviceTop"><span>05</span><a class="serviceArrow" href="/capabilities/data-platforms.html" aria-label="Learn more about Data Platforms"><span aria-hidden="true">↗</span></a></div>
+      <h3>Data Platforms</h3>
+      <p>Build the data foundations your analytics, AI, and business teams can actually trust.</p>
+      <div class="tags"><span>Data</span><span>Analytics</span><span>Governance</span></div>
+    </article>
+    <article class="service">
+      <div class="serviceTop"><span>06</span><a class="serviceArrow" href="/capabilities/intelligent-automation.html" aria-label="Learn more about Intelligent Automation"><span aria-hidden="true">↗</span></a></div>
+      <h3>Intelligent Automation</h3>
+      <p>Reimagine repetitive workflows with software, agents, and integrations that give teams their time back.</p>
+      <div class="tags"><span>Automation</span><span>Agents</span><span>APIs</span></div>
+    </article>
+  </div>
+
+  <div class="capabilityLinks">
+    <a class="capabilityLink" href="/capabilities/ai-strategy-transformation.html"><span><small>01 / CAPABILITY</small><strong>AI Strategy & Transformation</strong></span><span class="arrow">↗</span></a>
+    <a class="capabilityLink" href="/capabilities/cloud-architecture.html"><span><small>02 / CAPABILITY</small><strong>Cloud Architecture</strong></span><span class="arrow">↗</span></a>
+    <a class="capabilityLink" href="/capabilities/ai-engineering.html"><span><small>03 / CAPABILITY</small><strong>AI Engineering</strong></span><span class="arrow">↗</span></a>
+    <a class="capabilityLink" href="/capabilities/modernization-migration.html"><span><small>04 / CAPABILITY</small><strong>Modernization & Migration</strong></span><span class="arrow">↗</span></a>
+    <a class="capabilityLink" href="/capabilities/data-platforms.html"><span><small>05 / CAPABILITY</small><strong>Data Platforms</strong></span><span class="arrow">↗</span></a>
+    <a class="capabilityLink" href="/capabilities/intelligent-automation.html"><span><small>06 / CAPABILITY</small><strong>Intelligent Automation</strong></span><span class="arrow">↗</span></a>
+  </div>
+</section>
+
+<section id="approach" class="darkSection">
+  <div class="sectionKicker">03 / HOW WE WORK</div>
+  <div class="approachTitle">
+    <h2>Clarity first.<br><i>Velocity second.</i></h2>
+    <p>No black boxes. No theater.<br>We work alongside your team from first hypothesis to measurable outcome.</p>
+  </div>
+  <div class="process">
+    <div class="step"><div class="stepNum">01</div><div><h3>Discover</h3><p>Understand goals, constraints, stakeholders, current-state systems, and the real source of friction.</p></div></div>
+    <div class="step"><div class="stepNum">02</div><div><h3>Design</h3><p>Translate evidence into an architecture, operating model, priorities, and measurable success criteria.</p></div></div>
+    <div class="step"><div class="stepNum">03</div><div><h3>Build</h3><p>Work alongside internal teams to prototype, engineer, integrate, test, and harden the highest-value path.</p></div></div>
+    <div class="step"><div class="stepNum">04</div><div><h3>Measure</h3><p>Track adoption, reliability, economics, quality, and business impact — not just technical completion.</p></div></div>
+    <div class="step"><div class="stepNum">05</div><div><h3>Scale</h3><p>Codify what worked into reusable patterns, governance, platforms, and a roadmap for the next wave.</p></div></div>
+  </div>
+</section>
+
+<section id="work" class="section work">
+  <div class="sectionHead">
+    <div>
+      <div class="sectionKicker">04 / SELECTED WORK</div>
+      <h2>Proof over<br><span>promises.</span></h2>
+    </div>
+    <div class="filters">
+      <button class="active" data-filter="ALL" onclick="filterCases('ALL', this)">ALL</button>
+      <button data-filter="AI platform" onclick="filterCases('AI platform', this)">AI platform</button>
+      <button data-filter="Cloud" onclick="filterCases('Cloud', this)">Cloud</button>
+      <button data-filter="Automation" onclick="filterCases('Automation', this)">Automation</button>
+    </div>
+  </div>
+
+  <div class="caseGrid" id="caseGrid">
+    <article class="case" data-tags="AI platform">
+      <div class="caseArt"><div class="caseLines"></div><span class="caseLabel">AI PLATFORM</span><div class="caseMetric"><b>68%</b><small>FASTER CLAIMS RESEARCH</small></div></div>
+      <div class="caseBody"><h3>Enterprise RAG platform for a global insurer</h3><p>Rebuilt a fragile prototype into a production retrieval system with permissioned access, evaluation, and observability across 40,000+ policy documents.</p><div class="caseFoot"><span>AI platform</span></div></div>
+    </article>
+    <article class="case" data-tags="Cloud">
+      <div class="caseArt"><div class="caseLines"></div><span class="caseLabel">CLOUD</span><div class="caseMetric"><b>3x</b><small>FASTER ENVIRONMENT SETUP</small></div></div>
+      <div class="caseBody"><h3>Multi-account cloud foundation for a fintech scale-up</h3><p>Designed landing zones, IaC, and guardrails that let product teams ship new services without a platform ticket queue.</p><div class="caseFoot"><span>Cloud</span></div></div>
+    </article>
+    <article class="case" data-tags="Automation">
+      <div class="caseArt"><div class="caseLines"></div><span class="caseLabel">AUTOMATION</span><div class="caseMetric"><b>41%</b><small>REDUCTION IN MANUAL TOUCHES</small></div></div>
+      <div class="caseBody"><h3>Claims intake automation for a national insurer</h3><p>Automated document intake and triage with human review checkpoints for exceptions, cutting cycle time without losing oversight.</p><div class="caseFoot"><span>Automation</span></div></div>
+    </article>
+    <article class="case" data-tags="AI platform Automation">
+      <div class="caseArt"><div class="caseLines"></div><span class="caseLabel">AI PLATFORM</span><div class="caseMetric"><b>2.1x</b><small>TICKET DEFLECTION</small></div></div>
+      <div class="caseBody"><h3>Agentic support assistant for a SaaS platform</h3><p>Shipped a production agent with tool boundaries, approval checkpoints, and evaluation gates that let support teams trust its actions.</p><div class="caseFoot"><span>AI platform · Automation</span></div></div>
+    </article>
+    <article class="case" data-tags="Cloud AI platform">
+      <div class="caseArt"><div class="caseLines"></div><span class="caseLabel">DATA & CLOUD</span><div class="caseMetric"><b>5x</b><small>FASTER REPORTING CYCLES</small></div></div>
+      <div class="caseBody"><h3>Data platform modernization for a logistics network</h3><p>Migrated legacy batch pipelines to a governed lakehouse with data contracts and quality monitoring feeding both BI and AI workloads.</p><div class="caseFoot"><span>Cloud · AI platform</span></div></div>
+    </article>
+    <article class="case" data-tags="Cloud Automation">
+      <div class="caseArt"><div class="caseLines"></div><span class="caseLabel">MODERNIZATION</span><div class="caseMetric"><b>99.98%</b><small>CUTOVER UPTIME</small></div></div>
+      <div class="caseBody"><h3>Legacy core system migration for a regional bank</h3><p>Sequenced a 14-wave migration off a legacy mainframe with automated validation and rollback plans that kept every wave reversible.</p><div class="caseFoot"><span>Cloud · Automation</span></div></div>
+    </article>
+  </div>
+</section>
+
+<section class="techSection">
+  <div class="sectionKicker">05 / THE STACK</div>
+  <h2>Independent of the<br><span>hype cycle.</span></h2>
+  <p>We choose technology based on your problem, not our partner badge.</p>
+  <div class="techCloud">
+    <span>AWS</span><span>Azure</span><span>Google Cloud</span><span>Kubernetes</span><span>Terraform</span><span>Docker</span>
+    <span>Python</span><span>TypeScript</span><span>React</span><span>Node.js</span>
+    <span>OpenAI</span><span>Anthropic Claude</span><span>LangChain</span><span>LlamaIndex</span><span>Vector databases</span>
+    <span>Snowflake</span><span>Databricks</span><span>dbt</span><span>PostgreSQL</span><span>Kafka</span>
+    <span>GitHub Actions</span><span>Datadog</span><span>OpenTelemetry</span>
+  </div>
+</section>
+
+<section id="insights" class="section insights">
+  <div class="sectionHead">
+    <div>
+      <div class="sectionKicker">06 / INSIGHTS</div>
+      <h2>Ideas worth<br><span>shipping.</span></h2>
+    </div>
+    <button class="ghost">View all insights</button>
+  </div>
+  <div class="insightGrid">
+    <article class="insight"><div><span>AI Engineering</span><small>8 min read</small></div><h3>Why RAG systems fail in production — and how to catch it before users do</h3></article>
+    <article class="insight"><div><span>Cloud Architecture</span><small>6 min read</small></div><h3>The landing zone decisions that are expensive to reverse later</h3></article>
+    <article class="insight"><div><span>AI Strategy</span><small>7 min read</small></div><h3>How to prioritize AI use cases without a hundred-line spreadsheet</h3></article>
+    <article class="insight"><div><span>Intelligent Automation</span><small>5 min read</small></div><h3>Where human review checkpoints actually belong in an automated workflow</h3></article>
+    <article class="insight"><div><span>Data Platforms</span><small>6 min read</small></div><h3>Data contracts: the ownership model most platforms are missing</h3></article>
+    <article class="insight"><div><span>Modernization</span><small>9 min read</small></div><h3>Sequencing a legacy migration so every wave stays reversible</h3></article>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contactGlow"></div>
+  <div class="sectionKicker">07 / START HERE</div>
+  <h2>Have a hard<br><em>problem?</em></h2>
+  <p>Tell us what you're trying to build, fix, or figure out. We'll bring the right people to the conversation.</p>
+  <a class="primary" href="mailto:info@fifthcursor.com?subject=Consulting inquiry">Start a conversation</a>
+</section>
+</main>
+
+<footer>
+  <div class="footerBrand">
+    <img class="brandLogo" src="/fifth-cursor-logo.svg" alt="Fifth Cursor" style="width:38px">
+    <div><b>Fifth Cursor</b><small>AI × CLOUD CONSULTANCY</small></div>
+  </div>
+  <div class="footerLinks">
+    <span>© 2026 Fifth Cursor</span>
+    <a href="mailto:info@fifthcursor.com">info@fifthcursor.com</a>
+    <span>Built for what's next.</span>
+  </div>
+</footer>
+</div>
+
+<script>
+function filterCases(tag, btn){
+  document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#caseGrid .case').forEach(function(card){
+    var tags = card.getAttribute('data-tags');
+    card.classList.toggle('hidden', tag !== 'ALL' && tags.indexOf(tag) === -1);
+  });
+}
+</script>
+</body>
+</html>
