@@ -269,6 +269,33 @@ function Home() {
             </motion.article>
           ))}
         </div>
+
+        <div className="capabilityLinks">
+          <a className="capabilityLink" href="/capabilities/ai-strategy-transformation.html">
+            <span><small>01 / CAPABILITY</small><strong>AI Strategy & Transformation</strong></span>
+            <span className="arrow">↗</span>
+          </a>
+          <a className="capabilityLink" href="/capabilities/cloud-architecture.html">
+            <span><small>02 / CAPABILITY</small><strong>Cloud Architecture</strong></span>
+            <span className="arrow">↗</span>
+          </a>
+          <a className="capabilityLink" href="/capabilities/ai-engineering.html">
+            <span><small>03 / CAPABILITY</small><strong>AI Engineering</strong></span>
+            <span className="arrow">↗</span>
+          </a>
+          <a className="capabilityLink" href="/capabilities/modernization-migration.html">
+            <span><small>04 / CAPABILITY</small><strong>Modernization & Migration</strong></span>
+            <span className="arrow">↗</span>
+          </a>
+          <a className="capabilityLink" href="/capabilities/data-platforms.html">
+            <span><small>05 / CAPABILITY</small><strong>Data Platforms</strong></span>
+            <span className="arrow">↗</span>
+          </a>
+          <a className="capabilityLink" href="/capabilities/intelligent-automation.html">
+            <span><small>06 / CAPABILITY</small><strong>Intelligent Automation</strong></span>
+            <span className="arrow">↗</span>
+          </a>
+        </div>
       </section>
 
       <section id="approach" className="darkSection">
