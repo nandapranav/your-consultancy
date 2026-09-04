@@ -9,108 +9,187 @@ export default function DataPlatforms() {
       tags={[
         "Data",
         "Analytics",
-        "Governance",
-        "AI foundations"
+        "Governance"
       ]}
-      intro="Build the data foundations your analytics, AI, and business teams can actually trust."
-
-      overview="Modern analytics and AI depend on data that is discoverable, reliable, governed, and available at the right time. We design data platforms that connect operational systems with analytics, intelligence, and decision-making without creating another layer of unnecessary complexity."
-
-      challenge="Organizations often have plenty of data but struggle to use it consistently. Information is distributed across systems, definitions vary between teams, pipelines fail silently, and access controls make discovery difficult. A strong data platform turns fragmented information into a dependable foundation."
-
+      intro="AI is only as useful as the data around it. We build reliable data foundations that make information easier to discover, govern, analyze, and turn into intelligent products."
+      overview="Modern organizations generate enormous amounts of information across applications, customers, operations, devices, documents, and external sources. The challenge is turning that information into a trusted and usable foundation for analytics, decision-making, products, and AI."
+      challenge="A data platform is not simply a database or a warehouse. It is a system of ingestion, storage, transformation, governance, quality, access, semantics, and consumption that allows the organization to treat data as a dependable product."
       challenges={[
         [
           "Fragmented data",
-          "Important information often lives across applications, warehouses, SaaS platforms, files, and operational databases. We create architectures that connect those sources coherently."
+          "Information is often spread across operational databases, SaaS applications, files, APIs, warehouses, and departmental systems with no coherent architecture."
         ],
         [
-          "Poor data quality",
-          "AI and analytics cannot compensate for unreliable inputs. We establish quality checks, ownership, lineage, and monitoring around critical data."
-        ],
-        [
-          "Conflicting definitions",
-          "Different teams can use the same term to mean different things. We create semantic foundations that make business metrics understandable and consistent."
+          "Trust and quality",
+          "Duplicate records, inconsistent definitions, missing fields, stale information, and unclear ownership can undermine confidence in analytics."
         ],
         [
           "Governance friction",
-          "Data governance should enable responsible access rather than simply block it. We design controls that balance usability, security, privacy, and compliance."
+          "Organizations need to protect sensitive information without making legitimate data access so difficult that teams create workarounds."
+        ],
+        [
+          "AI readiness",
+          "AI initiatives often expose weaknesses in data foundations because models depend heavily on accurate, relevant, accessible, and well-governed information."
         ]
       ]}
-
       capabilities={[
         [
           "Modern data architecture",
-          "Design scalable architectures for ingestion, storage, transformation, analytics, AI, and operational data workloads."
+          "Design scalable architectures across warehouses, lakehouses, operational stores, streaming systems, and analytical platforms."
         ],
         [
           "Data pipelines",
-          "Build reliable pipelines that move and transform information while maintaining visibility into freshness and quality."
+          "Build reliable ingestion and transformation pipelines for batch, event-driven, and real-time workloads."
         ],
         [
           "Data quality",
-          "Create validation, monitoring, ownership, and remediation processes for critical data assets."
+          "Introduce validation, profiling, anomaly detection, testing, monitoring, and ownership around critical datasets."
         ],
         [
           "Semantic layers",
-          "Establish consistent definitions and business metrics so teams can reason about data using shared concepts."
+          "Create consistent business definitions so analytics, applications, and AI systems work from shared concepts."
         ],
         [
-          "Data governance",
-          "Design practical approaches to ownership, access, lineage, classification, privacy, and policy enforcement."
+          "Governance and lineage",
+          "Make ownership, access, provenance, classification, and lifecycle policies visible and enforceable."
         ],
         [
-          "AI data foundations",
-          "Prepare organizational knowledge and data for retrieval, analytics, intelligent applications, and future AI workloads."
+          "AI-ready data",
+          "Prepare enterprise information for retrieval, analytics, machine learning, and intelligent applications."
         ]
       ]}
-
+      architectureTitle="The modern data foundation"
+      architectureIntro="A strong data platform creates a continuous path from source systems to trusted information and then into analytics, products, and AI."
+      architectureItems={[
+        [
+          "01",
+          "Source systems",
+          "Connect operational databases, applications, SaaS platforms, files, APIs, devices, and external data."
+        ],
+        [
+          "02",
+          "Ingestion",
+          "Move information through reliable batch, streaming, and event-driven ingestion patterns."
+        ],
+        [
+          "03",
+          "Storage",
+          "Choose warehouses, lakehouses, object storage, operational databases, and specialized stores based on workload requirements."
+        ],
+        [
+          "04",
+          "Transformation",
+          "Clean, normalize, model, enrich, and validate information so it becomes useful for downstream consumers."
+        ],
+        [
+          "05",
+          "Governance",
+          "Apply ownership, classification, access controls, lineage, quality rules, retention, and policy enforcement."
+        ],
+        [
+          "06",
+          "Consumption",
+          "Deliver trusted data to dashboards, analytics, applications, data products, machine learning, and AI systems."
+        ]
+      ]}
       approach={[
         [
           "01",
           "Discover",
-          "Map important data sources, consumers, business definitions, ownership, dependencies, and existing platform capabilities."
+          "Map data sources, ownership, dependencies, quality issues, existing platforms, analytical needs, and AI requirements."
         ],
         [
           "02",
           "Architect",
-          "Design the target data platform around the organization's analytical and operational requirements."
+          "Define the target platform, data domains, storage patterns, integration model, governance approach, and operating model."
         ],
         [
           "03",
           "Connect",
-          "Build reliable ingestion and transformation paths between important systems."
+          "Prioritize critical sources and establish reliable ingestion, transformation, and synchronization pipelines."
         ],
         [
           "04",
           "Govern",
-          "Introduce quality, ownership, lineage, access, and policy controls without making data unusable."
+          "Introduce quality, ownership, access, lineage, metadata, and policy controls around the most important data products."
         ],
         [
           "05",
           "Activate",
-          "Connect the platform to analytics, products, automation, and AI use cases that create measurable value."
+          "Deliver trusted information into analytics, operational products, machine learning, and AI experiences."
         ]
       ]}
-
-      deliverables={[
-        "Current-state data architecture",
-        "Target-state data platform architecture",
-        "Data pipeline strategy",
-        "Data quality framework",
-        "Semantic and metrics strategy",
-        "Governance and lineage framework",
-        "AI data readiness assessment",
-        "Implementation roadmap"
+      useCases={[
+        [
+          "Enterprise analytics",
+          "Create a trusted analytical foundation that gives teams consistent information for reporting and decision-making."
+        ],
+        [
+          "Customer 360",
+          "Unify customer information across channels and systems to improve service, personalization, and business understanding."
+        ],
+        [
+          "Real-time intelligence",
+          "Process events and operational signals quickly enough to support responsive decisions and applications."
+        ],
+        [
+          "AI knowledge systems",
+          "Prepare enterprise information for retrieval-augmented generation, assistants, agents, and intelligent products."
+        ],
+        [
+          "Data products",
+          "Treat important datasets as managed products with clear owners, consumers, quality expectations, and service characteristics."
+        ],
+        [
+          "Regulated data environments",
+          "Build stronger controls around sensitive information while maintaining usable access for legitimate business needs."
+        ]
       ]}
-
+      technology={[
+        [
+          "Warehouses & lakehouses",
+          "Design analytical storage around workload patterns, data volume, performance, governance, and cost."
+        ],
+        [
+          "Streaming",
+          "Use event streams and real-time processing when business decisions or applications require low-latency information."
+        ],
+        [
+          "ELT & transformation",
+          "Build maintainable transformation workflows with testing, dependency management, observability, and clear ownership."
+        ],
+        [
+          "Data catalogs",
+          "Make datasets easier to discover through metadata, ownership, definitions, classification, and lineage."
+        ],
+        [
+          "Semantic layers",
+          "Create reusable definitions for business metrics and concepts so teams do not repeatedly rebuild the same logic."
+        ],
+        [
+          "AI data infrastructure",
+          "Prepare data for embeddings, retrieval, knowledge graphs, model training, evaluation, and AI applications."
+        ]
+      ]}
+      deliverables={[
+        "Current-state data assessment",
+        "Target data platform architecture",
+        "Data domain and ownership model",
+        "Pipeline and ingestion architecture",
+        "Data quality framework",
+        "Governance and lineage model",
+        "Semantic layer strategy",
+        "AI-ready data roadmap"
+      ]}
       outcomes={[
         "More trustworthy organizational data",
-        "Faster access to useful information",
-        "Consistent business definitions",
-        "Better visibility into data quality and lineage",
-        "Stronger foundations for analytics and AI",
-        "A scalable platform for future data products"
+        "Faster access to critical information",
+        "Consistent analytical definitions",
+        "Stronger governance without unnecessary friction",
+        "A scalable foundation for analytics and AI",
+        "Greater confidence in data-driven decisions"
       ]}
+      whyUs="We treat data as infrastructure for the entire organization. The architecture has to serve analytics, applications, operations, governance, and AI at the same time — without becoming another layer of complexity."
     />
   );
 }
