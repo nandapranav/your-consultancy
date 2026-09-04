@@ -358,4 +358,114 @@
   .detailLead {
     font-size: 18px;
   }
+
+   /* =========================================================
+   EXPANDED CAPABILITY PAGES
+   ========================================================= */
+
+.detailArchitecture {
+  border-top: 1px solid var(--line);
+}
+
+.architectureGrid {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.architectureItem {
+  min-height: 230px;
+  padding: 38px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: 25px;
+}
+
+.architectureItem > span,
+.useCase > span,
+.technologyItem > span {
+  font: 10px "DM Mono";
+  color: #8b8d86;
+}
+
+.architectureItem h3,
+.useCase h3,
+.technologyItem h3 {
+  margin: 0 0 15px;
+  font-size: 24px;
+  letter-spacing: -0.04em;
+}
+
+.architectureItem p,
+.useCase p,
+.technologyItem p {
+  margin: 0;
+  color: #6d6e68;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.useCaseGrid {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.useCase {
+  min-height: 260px;
+  padding: 40px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.useCase > span {
+  display: block;
+  margin-bottom: 35px;
+}
+
+.technologyList {
+  border-top: 1px solid var(--line);
+}
+
+.technologyItem {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: 25px;
+  padding: 35px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.technologyItem > span {
+  padding-top: 5px;
+}
+
+.detailCopy > p:not(.detailLead) {
+  margin-top: 30px;
+  max-width: 650px;
+  color: #6d6e68;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+@media (max-width: 800px) {
+  .architectureGrid,
+  .useCaseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .architectureItem,
+  .useCase {
+    min-height: auto;
+  }
+
+  .technologyItem {
+    grid-template-columns: 40px 1fr;
+  }
+}
 }
