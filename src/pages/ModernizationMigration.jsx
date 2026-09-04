@@ -1,195 +1,195 @@
 import React from "react";
 import CapabilityLayout from "./CapabilityLayout";
 
-export default function ModernizationMigration() {
+export default function DataPlatforms() {
   return (
     <CapabilityLayout
-      id="04"
-      title="Modernization & Migration"
+      id="05"
+      title="Data Platforms"
       tags={[
-        "Modernization",
-        "Migration",
-        "Legacy Systems"
+        "Data",
+        "Analytics",
+        "Governance"
       ]}
-      intro="Modernization is about creating a technology estate that can evolve. We help organizations assess legacy environments, choose the right migration strategy, modernize applications, and move toward architectures that are easier to change."
-      overview="Not every legacy system needs to be rewritten. The opportunity is to understand where existing architecture creates business friction, then choose the smallest intervention that creates meaningful improvement."
-      challenge="Large modernization programs fail when technology becomes the only lens. Successful modernization requires understanding dependencies, business processes, operational risk, team capabilities, data, and the economics of changing versus keeping the existing system."
+      intro="AI is only as useful as the data around it. We build reliable data foundations that make information easier to discover, govern, analyze, and turn into intelligent products."
+      overview="Modern organizations generate enormous amounts of information across applications, customers, operations, devices, documents, and external sources. The challenge is turning that information into a trusted and usable foundation for analytics, decision-making, products, and AI."
+      challenge="A data platform is not simply a database or a warehouse. It is a system of ingestion, storage, transformation, governance, quality, access, semantics, and consumption that allows the organization to treat data as a dependable product."
       challenges={[
         [
-          "Legacy complexity",
-          "Years of incremental changes can make applications difficult to understand, test, deploy, and modify safely."
+          "Fragmented data",
+          "Information is often spread across operational databases, SaaS applications, files, APIs, warehouses, and departmental systems with no coherent architecture."
         ],
         [
-          "Migration risk",
-          "Critical workloads often contain undocumented dependencies and business rules that cannot simply be copied into a new environment."
+          "Trust and quality",
+          "Duplicate records, inconsistent definitions, missing fields, stale information, and unclear ownership can undermine confidence in analytics."
         ],
         [
-          "Big-bang thinking",
-          "Large rewrites increase delivery risk. Incremental modernization can often produce value sooner while reducing the blast radius of change."
+          "Governance friction",
+          "Organizations need to protect sensitive information without making legitimate data access so difficult that teams create workarounds."
         ],
         [
-          "Operational disruption",
-          "Modernization must preserve business continuity while systems, data, infrastructure, and workflows are being changed."
+          "AI readiness",
+          "AI initiatives often expose weaknesses in data foundations because models depend heavily on accurate, relevant, accessible, and well-governed information."
         ]
       ]}
       capabilities={[
         [
-          "Legacy assessment",
-          "Map applications, dependencies, infrastructure, data, interfaces, operational processes, and technical debt."
+          "Modern data architecture",
+          "Design scalable architectures across warehouses, lakehouses, operational stores, streaming systems, and analytical platforms."
         ],
         [
-          "Migration strategy",
-          "Select appropriate strategies including rehost, replatform, refactor, retire, replace, or retain."
+          "Data pipelines",
+          "Build reliable ingestion and transformation pipelines for batch, event-driven, and real-time workloads."
         ],
         [
-          "Application modernization",
-          "Incrementally improve architecture through modularization, APIs, containers, managed services, and cloud-native patterns."
+          "Data quality",
+          "Introduce validation, profiling, anomaly detection, testing, monitoring, and ownership around critical datasets."
         ],
         [
-          "Data migration",
-          "Plan and execute data movement while protecting integrity, availability, lineage, and business continuity."
+          "Semantic layers",
+          "Create consistent business definitions so analytics, applications, and AI systems work from shared concepts."
         ],
         [
-          "Platform modernization",
-          "Modernize infrastructure, deployment systems, environments, observability, and developer workflows."
+          "Governance and lineage",
+          "Make ownership, access, provenance, classification, and lifecycle policies visible and enforceable."
         ],
         [
-          "Incremental transformation",
-          "Use sequenced modernization to reduce risk and create measurable progress without waiting for a massive final-state rewrite."
+          "AI-ready data",
+          "Prepare enterprise information for retrieval, analytics, machine learning, and intelligent applications."
         ]
       ]}
-      architectureTitle="Modernization without the rewrite trap"
-      architectureIntro="The right modernization strategy creates a path from today's architecture to tomorrow's without requiring the organization to replace everything at once."
+      architectureTitle="The modern data foundation"
+      architectureIntro="A strong data platform creates a continuous path from source systems to trusted information and then into analytics, products, and AI."
       architectureItems={[
         [
           "01",
-          "Discover",
-          "Understand the existing application, dependencies, business rules, infrastructure, data, and operational behavior."
+          "Source systems",
+          "Connect operational databases, applications, SaaS platforms, files, APIs, devices, and external data."
         ],
         [
           "02",
-          "Classify",
-          "Determine which workloads should be modernized, migrated, replaced, retired, or deliberately left alone."
+          "Ingestion",
+          "Move information through reliable batch, streaming, and event-driven ingestion patterns."
         ],
         [
           "03",
-          "Strangle",
-          "Incrementally extract valuable capabilities from monoliths using APIs, services, events, or modular boundaries."
+          "Storage",
+          "Choose warehouses, lakehouses, object storage, operational databases, and specialized stores based on workload requirements."
         ],
         [
           "04",
-          "Modernize",
-          "Introduce cloud-native infrastructure, better deployment practices, observability, testing, and architecture."
+          "Transformation",
+          "Clean, normalize, model, enrich, and validate information so it becomes useful for downstream consumers."
         ],
         [
           "05",
-          "Migrate",
-          "Move workloads and data using controlled waves with validation, rollback plans, and business continuity measures."
+          "Governance",
+          "Apply ownership, classification, access controls, lineage, quality rules, retention, and policy enforcement."
         ],
         [
           "06",
-          "Optimize",
-          "Continue improving reliability, performance, cost, developer experience, and maintainability after migration."
+          "Consumption",
+          "Deliver trusted data to dashboards, analytics, applications, data products, machine learning, and AI systems."
         ]
       ]}
       approach={[
         [
           "01",
-          "Inventory",
-          "Create a clear picture of applications, dependencies, data, infrastructure, ownership, costs, and business criticality."
+          "Discover",
+          "Map data sources, ownership, dependencies, quality issues, existing platforms, analytical needs, and AI requirements."
         ],
         [
           "02",
-          "Prioritize",
-          "Rank workloads based on business value, technical risk, complexity, cost, urgency, and modernization opportunity."
+          "Architect",
+          "Define the target platform, data domains, storage patterns, integration model, governance approach, and operating model."
         ],
         [
           "03",
-          "Design",
-          "Define target architecture and migration patterns for each workload rather than imposing one solution on everything."
+          "Connect",
+          "Prioritize critical sources and establish reliable ingestion, transformation, and synchronization pipelines."
         ],
         [
           "04",
-          "Migrate",
-          "Execute migration waves with testing, validation, observability, rollback plans, and stakeholder coordination."
+          "Govern",
+          "Introduce quality, ownership, access, lineage, metadata, and policy controls around the most important data products."
         ],
         [
           "05",
-          "Modernize",
-          "Improve the architecture incrementally as workloads move, using modernization to create long-term engineering leverage."
+          "Activate",
+          "Deliver trusted information into analytics, operational products, machine learning, and AI experiences."
         ]
       ]}
       useCases={[
         [
-          "Data center exits",
-          "Move infrastructure and applications out of aging data centers while establishing a more flexible operating model."
+          "Enterprise analytics",
+          "Create a trusted analytical foundation that gives teams consistent information for reporting and decision-making."
         ],
         [
-          "Monolith modernization",
-          "Gradually improve large applications without taking on the risk of a complete rewrite."
+          "Customer 360",
+          "Unify customer information across channels and systems to improve service, personalization, and business understanding."
         ],
         [
-          "Cloud migration",
-          "Move workloads to cloud platforms using strategies aligned to application characteristics and business requirements."
+          "Real-time intelligence",
+          "Process events and operational signals quickly enough to support responsive decisions and applications."
         ],
         [
-          "Platform replacement",
-          "Replace aging infrastructure, deployment systems, integration platforms, or middleware."
+          "AI knowledge systems",
+          "Prepare enterprise information for retrieval-augmented generation, assistants, agents, and intelligent products."
         ],
         [
-          "Database modernization",
-          "Modernize database platforms while protecting application behavior, data integrity, and operational continuity."
+          "Data products",
+          "Treat important datasets as managed products with clear owners, consumers, quality expectations, and service characteristics."
         ],
         [
-          "Developer experience",
-          "Improve build, test, deployment, environments, tooling, and observability so teams can deliver changes more safely."
+          "Regulated data environments",
+          "Build stronger controls around sensitive information while maintaining usable access for legitimate business needs."
         ]
       ]}
       technology={[
         [
-          "Containers",
-          "Package applications into consistent deployment units where containerization improves portability and operational control."
+          "Warehouses & lakehouses",
+          "Design analytical storage around workload patterns, data volume, performance, governance, and cost."
         ],
         [
-          "Kubernetes",
-          "Use Kubernetes where workload scale, portability, platform consistency, or orchestration requirements justify the operational complexity."
+          "Streaming",
+          "Use event streams and real-time processing when business decisions or applications require low-latency information."
         ],
         [
-          "APIs",
-          "Create clear service boundaries and integration contracts that allow legacy and modern components to coexist."
+          "ELT & transformation",
+          "Build maintainable transformation workflows with testing, dependency management, observability, and clear ownership."
         ],
         [
-          "Event-driven architecture",
-          "Use events to decouple systems and enable asynchronous workflows where they provide meaningful architectural benefits."
+          "Data catalogs",
+          "Make datasets easier to discover through metadata, ownership, definitions, classification, and lineage."
         ],
         [
-          "Infrastructure as code",
-          "Make environments repeatable and auditable through version-controlled infrastructure definitions."
+          "Semantic layers",
+          "Create reusable definitions for business metrics and concepts so teams do not repeatedly rebuild the same logic."
         ],
         [
-          "Observability",
-          "Establish logs, metrics, traces, health signals, and operational visibility across old and new systems."
+          "AI data infrastructure",
+          "Prepare data for embeddings, retrieval, knowledge graphs, model training, evaluation, and AI applications."
         ]
       ]}
       deliverables={[
-        "Application and infrastructure assessment",
-        "Modernization strategy",
-        "Migration wave plan",
-        "Target architecture",
-        "Dependency and risk map",
-        "Data migration strategy",
-        "Implementation roadmap",
-        "Post-migration optimization plan"
+        "Current-state data assessment",
+        "Target data platform architecture",
+        "Data domain and ownership model",
+        "Pipeline and ingestion architecture",
+        "Data quality framework",
+        "Governance and lineage model",
+        "Semantic layer strategy",
+        "AI-ready data roadmap"
       ]}
       outcomes={[
-        "Lower legacy technology risk",
-        "More maintainable applications",
-        "Faster and safer deployment cycles",
-        "Improved infrastructure flexibility",
-        "Reduced operational friction",
-        "A clear path toward a modern technology estate"
+        "More trustworthy organizational data",
+        "Faster access to critical information",
+        "Consistent analytical definitions",
+        "Stronger governance without unnecessary friction",
+        "A scalable foundation for analytics and AI",
+        "Greater confidence in data-driven decisions"
       ]}
-      whyUs="We do not modernize for the sake of modern architecture. We focus on the systems that matter, the risks that need to be reduced, and the technical changes that create measurable business and engineering leverage."
+      whyUs="We treat data as infrastructure for the entire organization. The architecture has to serve analytics, applications, operations, governance, and AI at the same time — without becoming another layer of complexity."
     />
   );
 }
