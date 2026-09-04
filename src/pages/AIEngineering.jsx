@@ -7,189 +7,110 @@ export default function AIEngineering() {
       id="03"
       title="AI Engineering"
       tags={[
-        "Generative AI",
-        "LLMs",
-        "AI Systems"
+        "Agents",
+        "RAG",
+        "MLOps",
+        "AI applications"
       ]}
-      intro="We engineer production-grade AI systems that combine models, data, software, tools, and workflows into reliable products — from retrieval-augmented applications to intelligent agents and decision systems."
-      overview="The difference between an AI demo and an AI product is engineering. Production AI requires reliable data flows, model selection, prompt and context design, evaluation, security, observability, latency management, cost controls, and a product experience people actually trust."
-      challenge="Modern AI systems are probabilistic, continuously evolving, and deeply dependent on the quality of their surrounding systems. The model is only one component of the product."
+      intro="We turn promising AI prototypes into dependable software. That means evaluation, retrieval, tool use, security, observability, and the details that make intelligent systems work in production."
+
+      overview="Production AI is software engineering with a new class of failure modes. Models can be probabilistic, context can be incomplete, outputs can change, and system behavior depends on data, prompts, tools, and orchestration. We build the surrounding engineering systems required to make AI applications dependable."
+
+      challenge="The jump from an impressive demo to a production AI system is substantial. A prototype can answer a handful of questions successfully. A production system must handle edge cases, changing information, access controls, latency, cost, evaluation, monitoring, failures, and real users."
+
       challenges={[
         [
-          "Prototype-to-production gap",
-          "A prompt that works in a demo may fail when exposed to different users, documents, edge cases, latency requirements, and production traffic."
+          "Prototype-to-production gaps",
+          "A successful demo does not automatically become a reliable application. We design the architecture and engineering practices required to make AI systems production-ready."
         ],
         [
           "Unreliable outputs",
-          "AI systems need systematic evaluation, grounding, validation, fallback behavior, and human oversight rather than relying on subjective testing."
+          "AI systems require evaluation and guardrails. We create measurable quality criteria and feedback loops instead of relying on subjective impressions."
         ],
         [
-          "Context quality",
-          "Even powerful models perform poorly when they receive incomplete, irrelevant, stale, or poorly structured context."
+          "Knowledge limitations",
+          "Models do not automatically know your organization's latest information. Retrieval, context management, and knowledge architecture become critical parts of the system."
         ],
         [
           "Operational complexity",
-          "Model costs, latency, provider dependencies, tool calls, security, monitoring, and changing model behavior all become engineering concerns."
+          "Models, prompts, tools, vector stores, APIs, and workflows all create new operational surfaces. We instrument the system so teams can understand what is happening."
         ]
       ]}
+
       capabilities={[
         [
-          "LLM applications",
-          "Design and build production applications using large language models, structured outputs, tool calling, and controlled generation."
+          "AI application architecture",
+          "Design end-to-end intelligent applications spanning models, APIs, orchestration, retrieval, tools, user interfaces, and operational systems."
         ],
         [
           "RAG systems",
-          "Build retrieval pipelines that connect models to enterprise knowledge while preserving relevance, freshness, access control, and traceability."
+          "Build retrieval pipelines that connect models with trusted organizational knowledge while managing relevance, freshness, permissions, and context."
         ],
         [
           "AI agents",
-          "Engineer agents capable of planning tasks, calling tools, interacting with systems, and completing controlled multi-step workflows."
+          "Design agentic systems that can reason through tasks, use tools, interact with systems, and operate within explicit boundaries."
         ],
         [
-          "AI evaluation",
-          "Create automated and human evaluation systems that measure factuality, relevance, safety, task completion, and regression over time."
+          "Evaluation systems",
+          "Create automated and human evaluation frameworks that measure accuracy, relevance, safety, latency, and task completion."
         ],
         [
-          "AI infrastructure",
-          "Design model access, routing, caching, observability, deployment, secrets, and cost-management systems."
+          "Guardrails and security",
+          "Design controls for prompt injection, sensitive information, unsafe outputs, access control, and human oversight."
         ],
         [
-          "AI product engineering",
-          "Integrate intelligence directly into products and workflows with strong user experiences, controls, and feedback loops."
+          "AI observability",
+          "Monitor model behavior, cost, latency, retrieval quality, failures, and user outcomes across production systems."
         ]
       ]}
-      architectureTitle="The production AI stack"
-      architectureIntro="Reliable AI applications require multiple coordinated layers. We engineer the complete system rather than treating the model API as the architecture."
-      architectureItems={[
-        [
-          "01",
-          "User experience",
-          "Design interactions that communicate what the system knows, what it does, and where people need to remain in control."
-        ],
-        [
-          "02",
-          "Orchestration",
-          "Coordinate prompts, workflows, tools, agents, business rules, and model calls."
-        ],
-        [
-          "03",
-          "Knowledge",
-          "Process, index, retrieve, rank, and authorize information used to ground model responses."
-        ],
-        [
-          "04",
-          "Models",
-          "Select and route models based on capability, latency, reliability, context requirements, and cost."
-        ],
-        [
-          "05",
-          "Evaluation",
-          "Continuously test system quality against representative tasks, edge cases, safety requirements, and production feedback."
-        ],
-        [
-          "06",
-          "Operations",
-          "Monitor latency, cost, failures, model behavior, tool usage, security events, and system health."
-        ]
-      ]}
+
       approach={[
         [
           "01",
-          "Frame",
-          "Define the user problem, workflow, success criteria, constraints, and level of intelligence actually required."
+          "Define",
+          "Translate the business workflow into clear AI system requirements and measurable success criteria."
         ],
         [
           "02",
           "Prototype",
-          "Rapidly test models, prompts, retrieval approaches, interfaces, and workflows against realistic examples."
+          "Test architecture, models, retrieval strategies, and user interactions quickly while measuring what actually works."
         ],
         [
           "03",
-          "Evaluate",
-          "Create measurable evaluations before scaling so improvements can be demonstrated rather than guessed."
+          "Engineer",
+          "Build the production system with robust APIs, evaluation, security, observability, and failure handling."
         ],
         [
           "04",
-          "Engineer",
-          "Build production architecture, data pipelines, security, monitoring, fallbacks, and deployment systems."
+          "Deploy",
+          "Release incrementally with monitoring, feedback loops, and operational ownership."
         ],
         [
           "05",
-          "Operate",
-          "Monitor real-world behavior and continuously improve models, retrieval, prompts, tools, and product experience."
+          "Improve",
+          "Continuously tune models, retrieval, prompts, workflows, and infrastructure based on real-world performance."
         ]
       ]}
-      useCases={[
-        [
-          "Enterprise copilots",
-          "Give employees contextual assistance across policies, documents, procedures, technical knowledge, and organizational information."
-        ],
-        [
-          "AI agents",
-          "Automate multi-step work by allowing AI systems to interact with approved tools, APIs, and business processes."
-        ],
-        [
-          "Customer support",
-          "Assist service teams with conversation understanding, knowledge retrieval, summarization, routing, and response generation."
-        ],
-        [
-          "Document intelligence",
-          "Extract structured information from contracts, reports, forms, invoices, and other unstructured business content."
-        ],
-        [
-          "Developer copilots",
-          "Improve software engineering workflows through code assistance, testing, documentation, debugging, and repository intelligence."
-        ],
-        [
-          "Decision support",
-          "Combine organizational data, business rules, analytics, and AI reasoning to help people make better decisions."
-        ]
-      ]}
-      technology={[
-        [
-          "Large language models",
-          "Evaluate and integrate model providers according to capability, context, latency, reliability, privacy, and cost."
-        ],
-        [
-          "Retrieval systems",
-          "Engineer ingestion, chunking, embeddings, vector search, hybrid retrieval, ranking, filtering, and authorization."
-        ],
-        [
-          "Agent architectures",
-          "Build controlled tool-using systems with explicit permissions, state, workflow boundaries, and failure handling."
-        ],
-        [
-          "Evaluation frameworks",
-          "Create test datasets, automated graders, human review, regression suites, and production quality metrics."
-        ],
-        [
-          "AI observability",
-          "Track model calls, prompts, retrieval quality, tool usage, latency, failures, costs, and user feedback."
-        ],
-        [
-          "Guardrails",
-          "Implement validation, policy checks, access control, structured outputs, content controls, and human-in-the-loop workflows."
-        ]
-      ]}
+
       deliverables={[
-        "AI product architecture",
-        "LLM and model strategy",
-        "RAG or knowledge architecture",
-        "Agent and workflow design",
-        "Evaluation framework",
-        "AI observability architecture",
-        "Production implementation",
-        "AI operations and improvement roadmap"
+        "Production AI architecture",
+        "AI application or agent prototype",
+        "RAG and knowledge architecture",
+        "Model and provider evaluation",
+        "Automated evaluation framework",
+        "Security and guardrail design",
+        "AI observability strategy",
+        "Production deployment roadmap"
       ]}
+
       outcomes={[
-        "Reliable AI applications instead of demos",
-        "Higher-quality and more measurable model behavior",
-        "Better grounding and enterprise knowledge access",
-        "Controlled AI agents and workflows",
-        "Improved visibility into cost and performance",
-        "A foundation for continuously improving AI products"
+        "AI systems that can move beyond demos",
+        "Measurable and continuously improving model quality",
+        "More reliable access to organizational knowledge",
+        "Better control over AI security and operational risk",
+        "Clear visibility into AI performance and cost",
+        "A foundation for scaling intelligent applications"
       ]}
-      whyUs="We approach AI as software engineering with probabilistic components. That means the surrounding architecture, evaluation, security, data, product experience, and operations receive as much attention as the model itself."
     />
   );
 }

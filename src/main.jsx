@@ -254,15 +254,13 @@ function Home() {
               <div className="serviceTop">
                 <span>{s.id}</span>
 
-                <button
+                <a
                   className="serviceArrow"
-                  onClick={() =>
-                    navigate(`/capabilities/${s.slug}`)
-                  }
+                  href={`/capabilities/${s.slug}`}
                   aria-label={`Learn more about ${s.title}`}
                 >
                   <span aria-hidden="true">↗</span>
-                </button>
+                </a>
               </div>
 
               <h3>{s.title}</h3>

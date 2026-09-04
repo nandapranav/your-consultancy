@@ -7,189 +7,110 @@ export default function CloudArchitecture() {
       id="02"
       title="Cloud Architecture"
       tags={[
-        "Cloud",
-        "Architecture",
-        "Platform Engineering"
+        "AWS",
+        "Azure",
+        "GCP",
+        "Platform engineering"
       ]}
-      intro="Cloud should make an organization faster, more resilient, and easier to evolve. We design cloud architectures that balance scalability, security, reliability, developer experience, and cost."
-      overview="Cloud transformation is not simply moving servers to someone else's infrastructure. The real opportunity is to redesign how applications, data, infrastructure, security, and engineering teams work together so the organization can deliver technology faster and operate it with greater confidence."
-      challenge="Cloud environments become difficult when they grow without an architectural model. Teams accumulate services, accounts, networking patterns, security controls, and deployment processes that solve individual problems but create system-wide complexity."
+      intro="We design cloud foundations around reliability, security, developer velocity, and economics — then make the architecture practical enough for teams to operate every day."
+
+      overview="Cloud architecture is not about putting existing infrastructure somewhere else. The right architecture gives engineering teams a safer, faster way to build and operate software while giving leadership visibility into reliability, security, and cost. We design cloud environments around those outcomes."
+
+      challenge="Cloud environments become difficult when every application solves infrastructure problems independently. Over time, teams accumulate inconsistent networking, identity, observability, deployment, and security patterns. The result is a platform that technically works but becomes increasingly expensive and difficult to operate."
+
       challenges={[
         [
-          "Cloud sprawl",
-          "Multiple accounts, subscriptions, regions, services, and deployment patterns can create unnecessary complexity and inconsistent controls."
+          "Architecture sprawl",
+          "Different teams often make different infrastructure decisions without a shared target state. We establish common architectural patterns without forcing every workload into the same mold."
         ],
         [
-          "Legacy constraints",
-          "Existing applications often carry assumptions about infrastructure, networking, storage, identity, and deployment that make migration difficult."
+          "Security complexity",
+          "Identity, networking, secrets, access controls, and compliance requirements can become fragmented. We create security foundations that are built into the platform instead of added later."
         ],
         [
-          "Reliability gaps",
-          "A cloud platform needs explicit thinking around availability, failure modes, disaster recovery, observability, and operational ownership."
+          "Unpredictable costs",
+          "Cloud flexibility can become cloud waste. We design cost visibility and optimization into the architecture so teams understand the economic consequences of their decisions."
         ],
         [
-          "Cost without context",
-          "Cloud spending can rise quickly when architecture, workload behavior, capacity, and ownership are not visible."
+          "Developer friction",
+          "Infrastructure should accelerate engineers rather than become another queue they have to navigate. We create self-service patterns and reusable platform capabilities that reduce unnecessary operational work."
         ]
       ]}
+
       capabilities={[
         [
-          "Cloud strategy",
-          "Define the right cloud model, migration priorities, architecture principles, and target operating model for the organization."
+          "Target-state architecture",
+          "Define a clear cloud architecture covering compute, networking, storage, identity, data, observability, security, and application integration."
         ],
         [
           "Landing zones",
-          "Establish secure and repeatable foundations for accounts, networking, identity, policies, logging, and shared services."
-        ],
-        [
-          "Application architecture",
-          "Modernize application architectures using containers, managed services, APIs, event-driven patterns, and appropriate compute models."
+          "Establish secure and repeatable foundations for accounts, subscriptions, networking, identity, policies, logging, and organizational controls."
         ],
         [
           "Platform engineering",
-          "Create internal platforms that give developers reusable paths for building, deploying, securing, and operating applications."
+          "Build reusable infrastructure and developer experiences that allow teams to provision and deploy systems consistently."
         ],
         [
           "Cloud security",
-          "Build identity, network controls, secrets management, policy enforcement, monitoring, and security architecture into the platform."
+          "Design identity, network segmentation, secrets management, policy enforcement, and security monitoring into the architecture."
         ],
         [
           "Reliability engineering",
-          "Design for availability, recovery, observability, graceful failure, incident response, and measurable service health."
+          "Design for failure with resilient architectures, observability, disaster recovery, capacity planning, and operational readiness."
+        ],
+        [
+          "FinOps",
+          "Connect infrastructure decisions to economics through cost visibility, allocation, optimization, and continuous review."
         ]
       ]}
-      architectureTitle="A cloud foundation built to scale"
-      architectureIntro="A strong cloud architecture creates clear boundaries between infrastructure, platforms, applications, data, security, and operations while making the common path easy for engineering teams."
-      architectureItems={[
-        [
-          "01",
-          "Foundation",
-          "Accounts, subscriptions, networking, identity, policies, logging, and baseline security controls."
-        ],
-        [
-          "02",
-          "Platform",
-          "Reusable infrastructure, deployment tooling, service templates, environments, and developer self-service."
-        ],
-        [
-          "03",
-          "Applications",
-          "Application workloads designed around the reliability, scalability, and deployment characteristics they actually need."
-        ],
-        [
-          "04",
-          "Data",
-          "Cloud-native storage, databases, pipelines, analytics, and data services integrated with application architecture."
-        ],
-        [
-          "05",
-          "Security",
-          "Identity-first controls, secrets, encryption, network boundaries, policy automation, monitoring, and auditability."
-        ],
-        [
-          "06",
-          "Operations",
-          "Observability, incident response, cost management, reliability metrics, and continuous improvement."
-        ]
-      ]}
+
       approach={[
         [
           "01",
           "Assess",
-          "Map the existing infrastructure, applications, dependencies, security controls, costs, team capabilities, and operational model."
+          "Understand the current estate, workloads, dependencies, operational model, security posture, and business constraints."
         ],
         [
           "02",
-          "Architect",
-          "Define target-state architecture, principles, platform boundaries, migration patterns, and non-functional requirements."
+          "Design",
+          "Create a target-state architecture that balances reliability, security, performance, developer experience, and cost."
         ],
         [
           "03",
-          "Foundation",
-          "Build the secure cloud foundation and reusable platform capabilities required by engineering teams."
+          "Standardize",
+          "Establish reusable infrastructure patterns, policies, environments, and platform capabilities."
         ],
         [
           "04",
-          "Modernize",
-          "Move and improve workloads using the right strategy for each application rather than forcing everything into one pattern."
+          "Migrate",
+          "Move workloads through controlled migration waves while minimizing disruption and operational risk."
         ],
         [
           "05",
           "Optimize",
-          "Continuously improve reliability, security, developer experience, performance, and cloud economics."
+          "Continuously improve reliability, performance, security, developer velocity, and cloud economics."
         ]
       ]}
-      useCases={[
-        [
-          "Cloud migration",
-          "Move workloads to cloud environments while reducing unnecessary disruption and addressing architectural limitations."
-        ],
-        [
-          "Platform engineering",
-          "Create internal developer platforms that make secure and reliable application delivery repeatable."
-        ],
-        [
-          "Application modernization",
-          "Refactor or replatform legacy systems to take advantage of cloud-native capabilities."
-        ],
-        [
-          "High-scale systems",
-          "Design architectures capable of handling changing workloads, global traffic, and demanding reliability requirements."
-        ],
-        [
-          "Cloud cost optimization",
-          "Identify architectural and operational changes that improve efficiency without compromising reliability."
-        ],
-        [
-          "Cloud operating models",
-          "Define ownership, governance, standards, automation, and engineering practices for sustainable cloud operations."
-        ]
-      ]}
-      technology={[
-        [
-          "Infrastructure as code",
-          "Use repeatable, version-controlled infrastructure patterns to make environments consistent and auditable."
-        ],
-        [
-          "Containers & Kubernetes",
-          "Use container platforms where they provide genuine value for portability, workload management, and deployment control."
-        ],
-        [
-          "Serverless & managed services",
-          "Select managed capabilities when they reduce operational burden and improve speed without introducing unacceptable constraints."
-        ],
-        [
-          "Observability",
-          "Connect logs, metrics, traces, alerts, and service-level indicators into a coherent operational picture."
-        ],
-        [
-          "Security architecture",
-          "Design identity, network segmentation, secrets, encryption, policies, and monitoring as platform primitives."
-        ],
-        [
-          "FinOps",
-          "Create visibility into cloud economics and connect spending to workload ownership, architecture, and business value."
-        ]
-      ]}
+
       deliverables={[
-        "Current-state cloud assessment",
-        "Target cloud architecture",
-        "Cloud landing zone design",
-        "Infrastructure and platform architecture",
-        "Application migration roadmap",
-        "Security and reliability architecture",
-        "Cloud cost optimization plan",
-        "Implementation and operating model"
+        "Current-state architecture assessment",
+        "Target-state cloud architecture",
+        "Cloud landing-zone design",
+        "Network and identity architecture",
+        "Platform engineering blueprint",
+        "Infrastructure-as-code patterns",
+        "Reliability and observability strategy",
+        "Cloud cost optimization roadmap"
       ]}
+
       outcomes={[
-        "A scalable and secure cloud foundation",
-        "Faster application delivery",
-        "Greater infrastructure consistency",
-        "Improved reliability and observability",
-        "Better control over cloud costs",
-        "A platform that can evolve with the organization"
+        "A scalable and understandable cloud foundation",
+        "Stronger security and identity controls",
+        "Faster developer provisioning and deployment",
+        "Improved reliability and operational visibility",
+        "More predictable infrastructure economics",
+        "A clear architecture path for future applications and AI workloads"
       ]}
-      whyUs="We treat cloud as an engineering system rather than a hosting destination. Architecture decisions are evaluated against reliability, security, developer experience, operational reality, and long-term economics."
     />
   );
 }

@@ -10,15 +10,9 @@ export default function CapabilityLayout({
   challenge,
   challenges,
   capabilities,
-  architectureTitle,
-  architectureIntro,
-  architectureItems,
   approach,
-  useCases,
-  technology,
   deliverables,
-  outcomes,
-  whyUs
+  outcomes
 }) {
   return (
     <main className="detailPage">
@@ -58,13 +52,6 @@ export default function CapabilityLayout({
         <div className="detailCopy">
           <p className="detailLead">
             {overview}
-          </p>
-
-          <p>
-            The goal is not to introduce technology for its own sake.
-            It is to create a stronger operating model around the
-            technology you already have — and make the next generation
-            of capabilities easier to build, operate, and scale.
           </p>
         </div>
       </section>
@@ -119,60 +106,18 @@ export default function CapabilityLayout({
             <br />
             <span>hypothesis.</span>
           </h2>
-
-          <p className="detailLargeCopy">
-            We combine strategy, architecture, engineering, and
-            implementation so that ideas can move quickly from
-            a business question into a production system.
-          </p>
         </div>
 
         <div className="detailCapabilityList">
-          {capabilities.map(([heading, text], index) => (
-            <div
-              className="detailCapability"
-              key={heading}
-            >
-              <div className="detailCapabilityNumber">
-                0{index + 1}
-              </div>
-
-              <div>
-                <h3>{heading}</h3>
-                <p>{text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-
-      {/* ARCHITECTURE */}
-      <section className="detailSection detailArchitecture">
-        <div className="detailSectionHeader">
-          <div className="sectionKicker">
-            HOW THE PIECES FIT
-          </div>
-
-          <h2>
-            Designed as a
-            <br />
-            <span>system.</span>
-          </h2>
-        </div>
-
-        <p className="detailLargeCopy">
-          {architectureIntro}
-        </p>
-
-        <div className="architectureGrid">
-          {architectureItems.map(
-            ([number, heading, text]) => (
+          {capabilities.map(
+            ([heading, text], index) => (
               <div
-                className="architectureItem"
+                className="detailCapability"
                 key={heading}
               >
-                <span>{number}</span>
+                <div className="detailCapabilityNumber">
+                  0{index + 1}
+                </div>
 
                 <div>
                   <h3>{heading}</h3>
@@ -199,85 +144,21 @@ export default function CapabilityLayout({
           </h2>
 
           <p>
-            We don't believe in transformation programs that disappear
-            into a strategy deck. Every engagement is designed around
-            decisions, implementation, and measurable progress.
+            We don't believe in transformation programs
+            that disappear into a strategy deck. Every
+            engagement is designed around decisions,
+            implementation, and measurable progress.
           </p>
         </div>
 
         <div className="detailProcess">
-          {approach.map(([number, heading, text]) => (
-            <div
-              className="detailProcessStep"
-              key={number}
-            >
-              <span>{number}</span>
-
-              <div>
-                <h3>{heading}</h3>
-                <p>{text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-
-      {/* USE CASES */}
-      <section className="detailSection">
-        <div className="detailSectionHeader">
-          <div className="sectionKicker">
-            WHERE WE CREATE VALUE
-          </div>
-
-          <h2>
-            Technology tied to
-            <br />
-            <span>real outcomes.</span>
-          </h2>
-        </div>
-
-        <div className="useCaseGrid">
-          {useCases.map(
-            ([heading, text], index) => (
+          {approach.map(
+            ([number, heading, text]) => (
               <div
-                className="useCase"
-                key={heading}
+                className="detailProcessStep"
+                key={number}
               >
-                <span>0{index + 1}</span>
-
-                <h3>{heading}</h3>
-
-                <p>{text}</p>
-              </div>
-            )
-          )}
-        </div>
-      </section>
-
-
-      {/* TECHNOLOGY */}
-      <section className="detailBody detailBodyAlt">
-        <div>
-          <div className="sectionKicker">
-            TECHNOLOGY & PATTERNS
-          </div>
-
-          <h2>
-            Built for the
-            <br />
-            <span>real world.</span>
-          </h2>
-        </div>
-
-        <div className="technologyList">
-          {technology.map(
-            ([heading, text], index) => (
-              <div
-                className="technologyItem"
-                key={heading}
-              >
-                <span>0{index + 1}</span>
+                <span>{number}</span>
 
                 <div>
                   <h3>{heading}</h3>
@@ -305,18 +186,20 @@ export default function CapabilityLayout({
         </div>
 
         <div className="detailDeliverables">
-          {deliverables.map((item, index) => (
-            <div
-              className="detailDeliverable"
-              key={item}
-            >
-              <span>
-                0{index + 1}
-              </span>
+          {deliverables.map(
+            (item, index) => (
+              <div
+                className="detailDeliverable"
+                key={item}
+              >
+                <span>
+                  0{index + 1}
+                </span>
 
-              <p>{item}</p>
-            </div>
-          ))}
+                <p>{item}</p>
+              </div>
+            )
+          )}
         </div>
       </section>
 
@@ -334,18 +217,20 @@ export default function CapabilityLayout({
         </h2>
 
         <div className="outcomeGrid">
-          {outcomes.map((outcome, index) => (
-            <div
-              className="outcomeItem"
-              key={outcome}
-            >
-              <span>
-                0{index + 1}
-              </span>
+          {outcomes.map(
+            (outcome, index) => (
+              <div
+                className="outcomeItem"
+                key={outcome}
+              >
+                <span>
+                  0{index + 1}
+                </span>
 
-              <p>{outcome}</p>
-            </div>
-          ))}
+                <p>{outcome}</p>
+              </div>
+            )
+          )}
         </div>
       </section>
 
@@ -363,8 +248,9 @@ export default function CapabilityLayout({
         </h2>
 
         <p>
-          {whyUs ||
-            "We stay close to the real system: architecture, implementation, trade-offs, and the people who have to operate it after launch."}
+          We stay close to the real system: architecture,
+          implementation, trade-offs, and the people who
+          have to operate it after launch.
         </p>
 
         <a
