@@ -279,7 +279,7 @@ function Home() {
             <span><small>02 / CAPABILITY</small><strong>Cloud Architecture</strong></span>
             <span className="arrow">↗</span>
           </a>
-          <a className="capabilityLink" href="/capabilities/ai-engineering.html">
+          <a className="capabilityLink" href="/pages/ai-engineering.html">
             <span><small>03 / CAPABILITY</small><strong>AI Engineering</strong></span>
             <span className="arrow">↗</span>
           </a>
