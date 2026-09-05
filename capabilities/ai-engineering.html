@@ -4,57 +4,562 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Engineering — Fifth Cursor</title>
-<meta name="description" content="Build production-grade AI systems that are reliable, observable, secure, and designed around the workflows that actually matter.">
+<meta name="description" content="Production-grade AI engineering: architecture, RAG, agents, evaluation, observability, security, MLOps, and scalable AI platforms.">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
-:root{--bg:#f5f4ef;--ink:#0b0c0e;--muted:#70726c;--line:#d7d6cf;--accent:#b7f000;--dark:#0b0d0f}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
-a{color:inherit}.grain{pointer-events:none;position:fixed;inset:0;opacity:.035;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3C[...]
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;background:rgba(245,244,239,.82);backd[...]
-.logo{width:190px;height:auto;display:block}.back{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:500 10px "DM Mono";letter-spacing:.1em;color:#666862;border:1px solid var(--[...]
-.hero{min-height:760px;padding:130px 8vw 120px;position:relative;border-bottom:1px solid var(--line);display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#f5f4ef 0%,#ebeae[...]
-.hero:after{content:"";position:absolute;width:620px;height:620px;border:1px solid #00000012;border-radius:50%;right:-180px;top:70px;box-shadow:0 0 0 90px #00000004,0 0 0 180px #000000025}
-.heroContent{position:relative;z-index:2;max-width:1050px}.eyebrow,.kicker{font:500 10px "DM Mono";letter-spacing:.14em;color:#6f716a;text-transform:uppercase}.eyebrow:before{content:"";display:inline[...]
-h1{font-size:clamp(64px,9vw,140px);line-height:.84;letter-spacing:-.08em;margin:30px 0 35px;max-width:1050px}h1 em{font-style:normal;color:#777b73}.lede{font-size:20px;line-height:1.7;color:#62645e;ma[...]
-.section{padding:125px 8vw;min-height:560px;border-bottom:1px solid var(--line)}.split{display:grid;grid-template-columns:1fr 2fr;gap:9vw}.section h2{font-size:clamp(48px,6vw,84px);line-height:.9;lett[...]
-.dark{background:var(--dark);color:#fff;border:0}.dark .kicker{color:#858880}.dark .copy p,.dark .row p{color:#969a92}.dark .row{border-color:#ffffff1c}.dark .row b{color:#b7f000}.dark h2 span{color:#[...]
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:55px}.card{padding:28px;background:#eeece5;border:1px solid var(--line);min-height:260px}.dark .card{background:#121516;bord[...]
-.process{margin-top:50px;border-top:1px solid #ffffff1c}.step{display:grid;grid-template-columns:70px 1fr 1fr;gap:30px;padding:30px 0;border-bottom:1px solid #ffffff1c}.stepNo{font:500 10px "DM Mono";[...]
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:55px}.metric{padding:35px 20px;border-right:1px solid var(--li[...]
-.faq{margin-top:45px}.faqItem{padding:25px 0;border-bottom:1px solid var(--line)}.faqItem h3{font-size:20px;margin:0 0 10px}.faqItem p{margin:0;max-width:760px;color:#6d6f68;line-height:1.7;font-size:[...]
-.cta{background:var(--ink);color:white;padding:125px 8vw;min-height:560px;position:relative;overflow:hidden}.cta:after{content:"";position:absolute;width:500px;height:500px;border-radius:50%;right:-13[...]
-footer{background:#080909;color:#aaa;padding:35px 8vw;display:flex;justify-content:space-between;align-items:center;font:9px "DM Mono";letter-spacing:.06em}footer a{text-decoration:none;color:#ddd}
-@media(max-width:900px){.nav{padding:0 7vw}.logo{width:145px}.hero{min-height:700px;padding:105px 7vw 90px}.hero:after{right:-400px}.section{padding:90px 7vw;min-height:0}.split{grid-template-columns:[...]
+
+:root{
+  --bg:#f5f4ef;
+  --paper:#eeece5;
+  --ink:#0b0c0e;
+  --muted:#70726c;
+  --muted2:#858880;
+  --line:#d7d6cf;
+  --accent:#b7f000;
+  --dark:#0b0d0f;
+  --dark2:#121516;
+  --white:#fff;
+  --max:1450px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,system-ui,sans-serif;
+  line-height:1.6;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:50;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+a{color:inherit}
+img{max-width:100%}
+::selection{background:var(--accent);color:var(--ink)}
+
+.nav{
+  height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  padding:0 6vw;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:40;
+  background:rgba(245,244,239,.92);
+  backdrop-filter:blur(18px);
+}
+.logo{width:190px;height:auto;display:block}
+.back{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  font:500 10px "DM Mono",monospace;
+  letter-spacing:.1em;
+  color:#666862;
+  border:1px solid var(--line);
+  padding:12px 16px;
+  transition:.25s ease;
+}
+.back:hover{background:var(--ink);color:white;border-color:var(--ink)}
+
+.progress{
+  position:fixed;
+  top:77px;
+  left:0;
+  width:0;
+  height:3px;
+  background:var(--accent);
+  z-index:45;
+}
+
+.hero{
+  min-height:790px;
+  padding:130px 8vw 120px;
+  position:relative;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:linear-gradient(180deg,#f5f4ef 0%,#ebeae4 100%);
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  width:720px;
+  height:720px;
+  border:1px solid #00000012;
+  border-radius:50%;
+  right:-250px;
+  top:40px;
+  box-shadow:0 0 0 100px #00000003,0 0 0 200px #00000002;
+}
+.hero:after{
+  content:"AI";
+  position:absolute;
+  right:8vw;
+  top:50%;
+  transform:translateY(-50%);
+  font:800 clamp(180px,25vw,430px)/.8 Inter,sans-serif;
+  letter-spacing:-.13em;
+  color:#00000004;
+}
+.heroContent{position:relative;z-index:2;max-width:1100px}
+.eyebrow,.kicker,.cardNo,.miniLabel{
+  font:500 10px "DM Mono",monospace;
+  letter-spacing:.14em;
+  color:#6f716a;
+  text-transform:uppercase;
+}
+.eyebrow:before{
+  content:"";
+  display:inline-block;
+  width:28px;
+  height:1px;
+  background:currentColor;
+  vertical-align:middle;
+  margin:0 12px 3px 0;
+}
+h1{
+  font-size:clamp(64px,9vw,142px);
+  line-height:.84;
+  letter-spacing:-.08em;
+  margin:30px 0 38px;
+  max-width:1050px;
+}
+h1 em{font-style:normal;color:#777b73}
+.lede{
+  font-size:20px;
+  line-height:1.7;
+  color:#62645e;
+  max-width:760px;
+  margin:0;
+}
+.heroMeta{display:flex;flex-wrap:wrap;gap:9px;margin-top:38px}
+.pill{
+  border:1px solid #bbbcb5;
+  padding:9px 12px;
+  font:500 9px "DM Mono",monospace;
+  letter-spacing:.1em;
+  background:#f8f7f2;
+}
+.scrollHint{
+  position:absolute;
+  left:8vw;
+  bottom:35px;
+  font:500 9px "DM Mono",monospace;
+  color:#777a72;
+  letter-spacing:.12em;
+}
+
+.section{
+  padding:125px 8vw;
+  min-height:620px;
+  border-bottom:1px solid var(--line);
+}
+.section.narrow{min-height:0}
+.split{
+  display:grid;
+  grid-template-columns:minmax(250px,1fr) minmax(0,2fr);
+  gap:9vw;
+  max-width:var(--max);
+  margin:auto;
+}
+.section h2,.cta h2{
+  font-size:clamp(48px,6vw,88px);
+  line-height:.9;
+  letter-spacing:-.065em;
+  margin:25px 0 0;
+  max-width:700px;
+}
+.section h2 span,.cta h2 em{color:#777b73;font-style:normal}
+.copy{max-width:900px}
+.copy p{color:#5f625b;font-size:16px;line-height:1.85;margin:0 0 25px}
+.copy .bigStatement{
+  color:var(--ink);
+  font-size:clamp(23px,2.2vw,34px);
+  line-height:1.35;
+  letter-spacing:-.03em;
+  margin-bottom:28px;
+}
+.copy strong{color:var(--ink)}
+
+.dark{
+  background:var(--dark);
+  color:#fff;
+  border:0;
+}
+.dark .kicker{color:#858880}
+.dark .copy p,.dark .row p{color:#969a92}
+.dark .row{border-color:#ffffff1c}
+.dark .row b{color:var(--accent)}
+.dark h2 span{color:#7e827c}
+.dark .bigStatement{color:#fff}
+
+.list{margin-top:45px;border-top:1px solid var(--line)}
+.dark .list{border-color:#ffffff1c}
+.row{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:35px;
+  padding:25px 0;
+  border-bottom:1px solid var(--line);
+}
+.row b{
+  font:500 10px "DM Mono",monospace;
+  letter-spacing:.1em;
+}
+.row p{margin:0!important}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:55px;
+}
+.card{
+  padding:30px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  min-height:285px;
+  transition:transform .25s ease,background .25s ease;
+}
+.card:hover{transform:translateY(-5px);background:#e7e5de}
+.dark .card{background:var(--dark2);border-color:#ffffff18}
+.card h3{
+  font-size:24px;
+  line-height:1.1;
+  letter-spacing:-.04em;
+  margin:30px 0 15px;
+}
+.card p{font-size:14px!important;line-height:1.7!important}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  margin-top:55px;
+}
+.metric{
+  padding:38px 22px;
+  border-right:1px solid var(--line);
+}
+.metric:last-child{border-right:0}
+.metric strong{
+  display:block;
+  font-size:46px;
+  letter-spacing:-.07em;
+  line-height:1;
+}
+.metric span{
+  display:block;
+  margin-top:12px;
+  color:var(--muted);
+  font:500 9px "DM Mono",monospace;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.process{margin-top:50px;border-top:1px solid #ffffff1c}
+.step{
+  display:grid;
+  grid-template-columns:70px 180px 1fr;
+  gap:30px;
+  padding:30px 0;
+  border-bottom:1px solid #ffffff1c;
+}
+.stepNo{font:500 10px "DM Mono",monospace;color:var(--accent)}
+.step h3{font-size:20px;margin:0;line-height:1.2}
+.step p{margin:0!important}
+
+.architecture{
+  margin-top:55px;
+  border:1px solid var(--line);
+  background:#eae8e1;
+}
+.archLayer{
+  padding:28px 30px;
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:30px;
+}
+.archLayer:last-child{border-bottom:0}
+.archLayer b{font:500 10px "DM Mono",monospace;letter-spacing:.1em}
+.archLayer p{margin:0;font-size:14px!important}
+
+.faq{margin-top:45px}
+.faqItem{padding:27px 0;border-bottom:1px solid var(--line)}
+.faqItem h3{font-size:20px;margin:0 0 10px;letter-spacing:-.02em}
+.faqItem p{margin:0;max-width:760px;color:#6d6f68;line-height:1.75;font-size:14px}
+
+.timeline{margin-top:50px}
+.phase{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:35px;
+  padding:30px 0;
+  border-top:1px solid var(--line);
+}
+.phaseNo{font:500 10px "DM Mono";color:#73766f}
+.phase h3{margin:0 0 8px;font-size:23px;letter-spacing:-.03em}
+.phase p{margin:0;max-width:750px;color:#676a63}
+
+.quote{
+  padding:50px;
+  background:var(--ink);
+  color:#fff;
+  margin-top:55px;
+  position:relative;
+  overflow:hidden;
+}
+.quote:after{
+  content:"";
+  position:absolute;
+  width:230px;height:230px;
+  border:1px solid #ffffff20;
+  border-radius:50%;
+  right:-70px;bottom:-110px;
+}
+.quote p{
+  font-size:clamp(25px,3vw,43px)!important;
+  line-height:1.25!important;
+  letter-spacing:-.04em;
+  color:#fff!important;
+  max-width:850px;
+  position:relative;
+  z-index:1;
+}
+.quote span{
+  font:500 9px "DM Mono";
+  letter-spacing:.1em;
+  color:var(--accent);
+}
+
+.cta{
+  background:var(--ink);
+  color:white;
+  padding:135px 8vw;
+  min-height:600px;
+  position:relative;
+  overflow:hidden;
+}
+.cta:after{
+  content:"";
+  position:absolute;
+  width:560px;
+  height:560px;
+  border-radius:50%;
+  right:-180px;
+  top:-80px;
+  border:1px solid #ffffff12;
+  box-shadow:0 0 0 100px #ffffff03,0 0 0 200px #ffffff02;
+}
+.ctaContent{position:relative;z-index:2;max-width:950px}
+.cta .kicker{color:#858880}
+.cta h2{font-size:clamp(65px,9vw,135px);max-width:900px}
+.cta p{font-size:18px;color:#969a92;max-width:700px;line-height:1.8}
+.ctaButton{
+  display:inline-flex;
+  margin-top:22px;
+  padding:15px 20px;
+  background:var(--accent);
+  color:var(--ink);
+  text-decoration:none;
+  font:500 10px "DM Mono";
+  letter-spacing:.1em;
+  transition:.2s;
+}
+.ctaButton:hover{transform:translateY(-2px);box-shadow:0 10px 30px #00000033}
+
+footer{
+  background:#080909;
+  color:#aaa;
+  padding:35px 8vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  font:9px "DM Mono",monospace;
+  letter-spacing:.06em;
+}
+footer a{text-decoration:none;color:#ddd}
+
+@media(max-width:1050px){
+  .split{gap:55px}
+  .cards{grid-template-columns:1fr}
+  .card{min-height:0}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+@media(max-width:900px){
+  .nav{padding:0 7vw}
+  .logo{width:145px}
+  .back{padding:10px 12px;font-size:8px}
+  .hero{min-height:700px;padding:105px 7vw 90px}
+  .hero:before{right:-400px}
+  .hero:after{right:-30px;font-size:230px}
+  .section{padding:90px 7vw;min-height:0}
+  .split{grid-template-columns:1fr;gap:45px}
+  .row{grid-template-columns:1fr;gap:12px}
+  .step{grid-template-columns:50px 1fr;gap:15px}
+  .step p{grid-column:2}
+  .architecture{margin-top:35px}
+  .archLayer{grid-template-columns:1fr;gap:12px}
+  .timeline .phase{grid-template-columns:65px 1fr}
+  .cta{padding:95px 7vw}
+  footer{padding:28px 7vw;flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:600px){
+  .nav{height:68px}
+  .progress{top:67px}
+  .back{font-size:0;border:0;padding:8px}
+  .back:first-letter{font-size:18px}
+  .hero{padding-top:90px}
+  h1{font-size:clamp(57px,17vw,88px);margin-top:25px}
+  .lede{font-size:17px}
+  .heroMeta{margin-top:28px}
+  .pill{font-size:8px}
+  .section h2{font-size:52px}
+  .metrics{grid-template-columns:1fr}
+  .metric{border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .metric:last-child{border-bottom:0!important}
+  .quote{padding:30px}
+  .cta h2{font-size:60px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
 </style>
 </head>
+
 <body>
-<div class="grain"></div>
+
+<div class="progress" id="progress"></div>
+
 <header class="nav">
-  <a href="../" aria-label="Fifth Cursor home"><img class="logo" src="../fifth-cursor-horizontal.svg" alt="Fifth Cursor"></a>
+  <a href="../" aria-label="Fifth Cursor home">
+    <img class="logo" src="../fifth-cursor-horizontal.svg" alt="Fifth Cursor">
+  </a>
   <a class="back" href="../">← BACK TO FIFTH CURSOR</a>
 </header>
 
 <section class="hero">
   <div class="heroContent">
     <div class="eyebrow">03 / AI ENGINEERING</div>
-    <h1>AI Engineering</h1>
-    <p class="lede">Build production-grade AI systems that are reliable, observable, secure, and designed around the workflows that actually matter.</p>
-    <div class="heroMeta"><span class="pill">LLMS</span><span class="pill">RAG</span><span class="pill">AGENTS</span><span class="pill">MLOPS</span></div>
+    <h1>AI <em>Engineering.</em></h1>
+    <p class="lede">
+      Build production-grade AI systems that are reliable, observable, secure,
+      economically viable, and designed around the workflows that actually matter.
+    </p>
+    <div class="heroMeta">
+      <span class="pill">LLMS</span>
+      <span class="pill">RAG</span>
+      <span class="pill">AGENTS</span>
+      <span class="pill">MLOPS</span>
+      <span class="pill">EVALUATION</span>
+      <span class="pill">AI PLATFORMS</span>
+    </div>
+  </div>
+  <div class="scrollHint">SCROLL TO EXPLORE ↓</div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">01 / THE PROBLEM</div>
+      <h2>The <span>problem</span> is rarely the model.</h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        A demo can answer a question. A production system has to survive everything
+        that happens after the demo.
+      </p>
+      <p>
+        AI prototypes are deceptively easy to build. A model can be connected to an
+        interface in an afternoon, a document can be embedded into a vector database,
+        and an agent can appear to perform useful work after only a few prompts.
+        The hard part begins when people depend on that system.
+      </p>
+      <p>
+        Real users introduce ambiguity. Real data contains duplicates, stale records,
+        conflicting documents, missing context, permissions, sensitive information,
+        and formatting nobody anticipated. Models change. Providers change pricing.
+        Latency changes under load. Retrieval can fail silently. Tools can return
+        unexpected data. A system that looked perfect in a controlled demo can become
+        unpredictable when it meets the real world.
+      </p>
+      <p>
+        Our AI engineering approach treats the model as one component inside a larger
+        engineered system. We design the surrounding architecture so that AI behavior
+        can be measured, constrained, monitored, improved, and operated by a real team.
+      </p>
+    </div>
   </div>
 </section>
-<section class="section"><div class="split"><div><div class="kicker">01 / THE PROBLEM</div><h2>The <span>problem</span></h2></div><div class="copy"><p class="bigStatement">A demo can answer a question[...]
+
 <section class="section dark">
   <div class="split">
-    <div><div class="kicker">10 / THE ENGINEERING LAYER</div><h2>From <span>prototype</span> to production.</h2></div>
+    <div>
+      <div class="kicker">02 / ENGINEERING LAYER</div>
+      <h2>From <span>prototype</span> to production.</h2>
+    </div>
     <div class="copy">
-      <p class="bigStatement">The last 20% of an AI project often contains most of the engineering complexity. We help teams cross that line deliberately.</p>
-      <p>A prototype proves that something is possible. Production proves that it can be operated. That distinction changes almost everything: interfaces need contracts, data needs ownership, models n[...]
-      <p>We help turn promising experiments into systems that can be deployed, monitored, improved, and supported by real teams. That may mean refactoring an existing prototype, introducing an evaluat[...]
+      <p class="bigStatement">
+        The last 20% of an AI project often contains most of the engineering complexity.
+      </p>
+      <p>
+        A prototype proves that something is possible. Production proves that it can be
+        operated. That distinction changes almost everything: interfaces need contracts,
+        data needs ownership, models need evaluation, prompts need versioning, systems
+        need observability, and failures need deliberate behavior.
+      </p>
+      <p>
+        We help turn promising experiments into systems that can be deployed, monitored,
+        improved, and supported by real teams. That may mean refactoring an existing
+        prototype, introducing an evaluation harness, redesigning a retrieval pipeline,
+        building an orchestration layer, or creating the platform capabilities needed
+        for multiple AI applications.
+      </p>
+
       <div class="list">
-        <div class="row"><b>01 / RELIABILITY</b><p>Design graceful degradation, retries, timeouts, fallbacks, and clear failure states for real operating conditions.</p></div>
-        <div class="row"><b>02 / OBSERVABILITY</b><p>Make model calls, retrieval quality, tool execution, latency, errors, and costs visible enough to diagnose.</p></div>
-        <div class="row"><b>03 / ECONOMICS</b><p>Understand inference, retrieval, storage, infrastructure, and human-review costs before scale makes them painful.</p></div>
-        <div class="row"><b>04 / OPERATIONS</b><p>Define ownership, release practices, incident paths, documentation, and the controls required to keep systems healthy.</p></div>
+        <div class="row">
+          <b>01 / RELIABILITY</b>
+          <p>Design graceful degradation, retries, timeouts, fallbacks, validation, and clear failure states for real operating conditions.</p>
+        </div>
+        <div class="row">
+          <b>02 / OBSERVABILITY</b>
+          <p>Make model calls, retrieval quality, tool execution, latency, errors, token usage, and costs visible enough to diagnose.</p>
+        </div>
+        <div class="row">
+          <b>03 / ECONOMICS</b>
+          <p>Understand inference, retrieval, storage, infrastructure, and human-review costs before scale makes them painful.</p>
+        </div>
+        <div class="row">
+          <b>04 / OPERATIONS</b>
+          <p>Define ownership, release practices, incident paths, documentation, and controls required to keep systems healthy.</p>
+        </div>
+        <div class="row">
+          <b>05 / SECURITY</b>
+          <p>Build around identity, authorization, data boundaries, prompt injection resistance, secrets management, and controlled tool access.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -62,15 +567,126 @@ footer{background:#080909;color:#aaa;padding:35px 8vw;display:flex;justify-conte
 
 <section class="section">
   <div class="split">
-    <div><div class="kicker">11 / HOW WE WORK</div><h2>Technical depth. <span>Business context.</span></h2></div>
+    <div>
+      <div class="kicker">03 / WHAT WE BUILD</div>
+      <h2>AI systems with <span>structure.</span></h2>
+    </div>
     <div class="copy">
-      <p class="bigStatement">Good AI engineering starts by understanding the work people are actually trying to accomplish.</p>
-      <p>We begin with the workflow, not the model. What decision is being improved? What task is being accelerated? Where does information enter the process? Who owns the outcome? What happens when t[...]
-      <p>From there, we map the current state, identify the highest-value opportunities, define measurable outcomes, and choose the smallest technical path that can prove the idea. Once the value is e[...]
+      <p class="bigStatement">
+        Different AI products require different architectures. The common requirement
+        is disciplined engineering around uncertain model behavior.
+      </p>
+      <p>
+        We work across the application layer, intelligence layer, data layer, and
+        operational layer. The goal is not to introduce complexity for its own sake.
+        It is to put the right boundaries around the parts of the system that need
+        predictable behavior.
+      </p>
+
       <div class="cards">
-        <article class="card"><span class="cardNo">A / PRINCIPLE</span><h3>Start with outcomes</h3><p>Technology is the mechanism. The reason for building it should remain clear from the first worksho[...]
-        <article class="card"><span class="cardNo">B / PRINCIPLE</span><h3>Engineer for reality</h3><p>Design around messy data, imperfect users, changing models, operational constraints, and the long[...]
-        <article class="card"><span class="cardNo">C / PRINCIPLE</span><h3>Leave capability behind</h3><p>Document decisions, transfer knowledge, and create patterns internal teams can continue using [...]
+        <article class="card">
+          <span class="cardNo">A / SYSTEM</span>
+          <h3>AI Applications</h3>
+          <p>
+            Internal copilots, knowledge assistants, workflow automation, decision
+            support tools, customer-facing AI experiences, and domain-specific
+            applications.
+          </p>
+        </article>
+        <article class="card">
+          <span class="cardNo">B / KNOWLEDGE</span>
+          <h3>RAG Systems</h3>
+          <p>
+            Retrieval pipelines that connect models to enterprise knowledge with
+            chunking, metadata, filtering, permissions, ranking, citations, and
+            freshness in mind.
+          </p>
+        </article>
+        <article class="card">
+          <span class="cardNo">C / AUTONOMY</span>
+          <h3>Agents</h3>
+          <p>
+            Tool-using systems with explicit workflows, bounded permissions,
+            structured outputs, state management, evaluation, and human approval
+            where autonomy should stop.
+          </p>
+        </article>
+        <article class="card">
+          <span class="cardNo">D / PLATFORM</span>
+          <h3>AI Platforms</h3>
+          <p>
+            Shared infrastructure for model access, prompt management, evaluation,
+            telemetry, routing, security, cost controls, and reusable AI capabilities.
+          </p>
+        </article>
+        <article class="card">
+          <span class="cardNo">E / QUALITY</span>
+          <h3>Evaluation</h3>
+          <p>
+            Repeatable evaluation datasets, task-specific metrics, regression testing,
+            human review loops, model comparisons, and production quality monitoring.
+          </p>
+        </article>
+        <article class="card">
+          <span class="cardNo">F / OPERATIONS</span>
+          <h3>MLOps & LLMOps</h3>
+          <p>
+            Deployment pipelines, model and prompt versioning, observability,
+            rollback strategies, infrastructure automation, and lifecycle management.
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">04 / THE BUSINESS CASE</div>
+      <h2>Useful AI has to create <span>measurable value.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        The strongest AI systems are built around a measurable change in how work gets done.
+      </p>
+      <p>
+        We start with the workflow rather than assuming that adding a language model
+        automatically creates value. A useful system might reduce time spent searching
+        for information, accelerate document processing, improve response quality,
+        reduce repetitive work, increase consistency, or give employees better access
+        to specialized knowledge.
+      </p>
+      <p>
+        That means the engineering conversation needs to include business context.
+        What is the current process? Where does work get stuck? Which decisions are
+        expensive or slow? What does a good outcome look like? Which steps must remain
+        deterministic? Which decisions require a person?
+      </p>
+      <p>
+        Those answers shape the architecture. Sometimes the correct solution is an
+        advanced agent. Sometimes it is a straightforward retrieval system. Sometimes
+        it is a conventional application with one carefully scoped AI capability.
+        Good engineering includes knowing the difference.
+      </p>
+
+      <div class="metrics">
+        <div class="metric">
+          <strong>01</strong>
+          <span>Workflow first</span>
+        </div>
+        <div class="metric">
+          <strong>02</strong>
+          <span>Measure outcomes</span>
+        </div>
+        <div class="metric">
+          <strong>03</strong>
+          <span>Engineer constraints</span>
+        </div>
+        <div class="metric">
+          <strong>04</strong>
+          <span>Operate continuously</span>
+        </div>
       </div>
     </div>
   </div>
@@ -78,32 +694,48 @@ footer{background:#080909;color:#aaa;padding:35px 8vw;display:flex;justify-conte
 
 <section class="section dark">
   <div class="split">
-    <div><div class="kicker">12 / REFERENCE SYSTEM</div><h2>A modern <span>AI stack.</span></h2></div>
-    <div class="copy">
-      <p class="bigStatement">The best architecture is rarely one product. It is a set of layers with clear responsibilities.</p>
-      <p>We think about AI applications as interconnected systems: user experience, application logic, orchestration, model access, retrieval, enterprise data, external tools, infrastructure, security[...]
-      <div class="process">
-        <div class="step"><div class="stepNo">01</div><h3>Experience</h3><p>Interfaces that make AI behavior understandable and useful, including feedback, approvals, citations, and clear status.</p><[...]
-        <div class="step"><div class="stepNo">02</div><h3>Application</h3><p>Business rules, workflow state, permissions, APIs, validation, and deterministic logic around model behavior.</p></div>
-        <div class="step"><div class="stepNo">03</div><h3>Intelligence</h3><p>Models, prompts, structured outputs, routing, retrieval, tools, agents, and task-specific reasoning patterns.</p></div>
-        <div class="step"><div class="stepNo">04</div><h3>Data</h3><p>Documents, databases, metadata, embeddings, knowledge sources, permissions, freshness, and lineage.</p></div>
-        <div class="step"><div class="stepNo">05</div><h3>Operations</h3><p>Evaluation, telemetry, cost controls, deployments, security, governance, incident response, and lifecycle management.</p></d[...]
-      </div>
+    <div>
+      <div class="kicker">05 / RAG ENGINEERING</div>
+      <h2>Knowledge that stays <span>useful.</span></h2>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="split">
-    <div><div class="kicker">13 / ENGAGEMENT MODEL</div><h2>Flexible by <span>design.</span></h2></div>
     <div class="copy">
-      <p class="bigStatement">Not every AI problem needs a six-month transformation program. Some need a sharp architecture decision. Others need an engineering partner for the hard middle.</p>
-      <p>Fifth Cursor can enter at different points in the lifecycle. We can help a leadership team understand where AI can create value, help an architecture group choose a technical direction, help [...]
+      <p class="bigStatement">
+        Retrieval-augmented generation is not simply “put documents into a vector database.”
+      </p>
+      <p>
+        A dependable knowledge system begins with the source material. We consider how
+        information is collected, parsed, normalized, segmented, enriched with metadata,
+        indexed, retrieved, ranked, filtered, and ultimately presented to the model.
+      </p>
+      <p>
+        Retrieval quality depends on the entire pipeline. Chunking strategy affects
+        context. Metadata enables filtering. Access controls determine what a user is
+        allowed to retrieve. Hybrid search can improve recall for terminology that
+        embeddings do not represent well. Reranking can improve the final context.
+        Citations can make answers easier to verify.
+      </p>
+
       <div class="list">
-        <div class="row"><b>01 / ADVISORY</b><p>Focused technical and strategic guidance for teams making important AI architecture, platform, or product decisions.</p></div>
-        <div class="row"><b>02 / DISCOVERY</b><p>A structured assessment that turns a broad AI ambition into prioritized opportunities, constraints, and an executable roadmap.</p></div>
-        <div class="row"><b>03 / BUILD</b><p>Hands-on engineering support for prototypes, vertical slices, integrations, RAG systems, agents, evaluation infrastructure, and production foundations.</p>[...]
-        <div class="row"><b>04 / SCALE</b><p>Support for teams moving from individual AI applications toward reusable platforms, standards, governance, and operating models.</p></div>
+        <div class="row">
+          <b>01 / INGESTION</b>
+          <p>Connect documents, databases, APIs, and operational sources while preserving metadata and ownership.</p>
+        </div>
+        <div class="row">
+          <b>02 / TRANSFORMATION</b>
+          <p>Parse, clean, classify, chunk, enrich, and prepare source material for retrieval.</p>
+        </div>
+        <div class="row">
+          <b>03 / RETRIEVAL</b>
+          <p>Combine semantic search, lexical techniques, filters, metadata, and ranking strategies where appropriate.</p>
+        </div>
+        <div class="row">
+          <b>04 / CONTEXT</b>
+          <p>Control what enters the model context and provide source information that supports grounded responses.</p>
+        </div>
+        <div class="row">
+          <b>05 / GOVERNANCE</b>
+          <p>Respect permissions, freshness, retention requirements, sensitive data boundaries, and source ownership.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -111,20 +743,514 @@ footer{background:#080909;color:#aaa;padding:35px 8vw;display:flex;justify-conte
 
 <section class="section">
   <div class="split">
-    <div><div class="kicker">14 / FINAL CHECK</div><h2>Before you <span>ship.</span></h2></div>
+    <div>
+      <div class="kicker">06 / AGENT ENGINEERING</div>
+      <h2>Autonomy with <span>boundaries.</span></h2>
+    </div>
     <div class="copy">
-      <p class="bigStatement">A production AI system should answer more than “does the demo work?”</p>
-      <div class="faq">
-        <div class="faqItem"><h3>Can we explain what the system is allowed to do?</h3><p>Permissions, tools, actions, and approval boundaries should be explicit rather than implied.</p></div>
-        <div class="faqItem"><h3>Can we tell when quality gets worse?</h3><p>Evaluation and monitoring should make regressions visible before users discover them at scale.</p></div>
-        <div class="faqItem"><h3>Can we understand what a failure means?</h3><p>Logs, traces, model metadata, retrieval context, and application telemetry should provide enough evidence to investigate[...]
-        <div class="faqItem"><h3>Can the economics work at real volume?</h3><p>Latency, inference, storage, infrastructure, and review costs should be considered before the system reaches production s[...]
-        <div class="faqItem"><h3>Can the internal team own it?</h3><p>Architecture, documentation, runbooks, standards, and knowledge transfer should make continued operation realistic.</p></div>
+      <p class="bigStatement">
+        An agent should not be considered reliable simply because it can complete a task.
+      </p>
+      <p>
+        Agentic systems introduce another layer of uncertainty because the model can
+        decide which actions to take and in what order. That can be powerful, but
+        production systems need explicit boundaries around those decisions.
+      </p>
+      <p>
+        We design agents around defined tools, structured inputs and outputs, state
+        management, authorization, validation, retries, timeouts, and escalation paths.
+        High-impact actions can require human approval. Low-risk operations can be
+        automated. The important part is that the boundary is intentional.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <span class="cardNo">01 / TOOLS</span>
+          <h3>Controlled capabilities</h3>
+          <p>Expose only the tools an agent actually needs, with clear schemas and predictable responses.</p>
+        </article>
+        <article class="card">
+          <span class="cardNo">02 / STATE</span>
+          <h3>Explicit workflow state</h3>
+          <p>Track what happened, what remains, what failed, and what information the next step depends on.</p>
+        </article>
+        <article class="card">
+          <span class="cardNo">03 / APPROVAL</span>
+          <h3>Human checkpoints</h3>
+          <p>Route consequential actions to people when the risk of autonomous execution is too high.</p>
+        </article>
+      </div>
+
+      <div class="quote">
+        <span>DESIGN PRINCIPLE</span>
+        <p>
+          The goal is not maximum autonomy. The goal is the right amount of autonomy
+          for the task, the risk, and the business outcome.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta"><div class="kicker">15 / START HERE</div><h2>Have a hard <em>problem?</em></h2><p>Tell us what you are trying to build, modernize, automate, or figure out. We will bring the right[...]
-<footer><span>© 2026 Fifth Cursor · AI × CLOUD CONSULTANCY</span><a href="../">Return to home</a></footer>
-</body></html>
+<section class="section dark">
+  <div class="split">
+    <div>
+      <div class="kicker">07 / EVALUATION</div>
+      <h2>If you cannot <span>measure it,</span> you cannot improve it.</h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        AI quality cannot be managed by intuition alone.
+      </p>
+      <p>
+        Traditional software testing assumes deterministic behavior. AI systems are
+        probabilistic, which means evaluation needs to be treated as an ongoing
+        engineering discipline. A change to a prompt, model, retrieval configuration,
+        tool description, or context window can alter system behavior.
+      </p>
+      <p>
+        We help teams create evaluation datasets that represent the actual work the
+        system needs to perform. Depending on the use case, evaluation can examine
+        factuality, groundedness, retrieval quality, instruction following, structured
+        output validity, safety behavior, tool selection, task completion, latency,
+        and cost.
+      </p>
+
+      <div class="process">
+        <div class="step">
+          <div class="stepNo">01</div>
+          <h3>Define success</h3>
+          <p>Translate vague expectations into observable criteria that can be evaluated consistently.</p>
+        </div>
+        <div class="step">
+          <div class="stepNo">02</div>
+          <h3>Build datasets</h3>
+          <p>Collect representative examples, difficult edge cases, failure cases, and high-value workflows.</p>
+        </div>
+        <div class="step">
+          <div class="stepNo">03</div>
+          <h3>Run regressions</h3>
+          <p>Compare system versions before releases so improvements do not quietly introduce new failures.</p>
+        </div>
+        <div class="step">
+          <div class="stepNo">04</div>
+          <h3>Close the loop</h3>
+          <p>Use production feedback and human review to continuously improve evaluation coverage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">08 / OBSERVABILITY</div>
+      <h2>Make AI behavior <span>visible.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        When an AI system fails, “the model gave a bad answer” is not an adequate diagnosis.
+      </p>
+      <p>
+        Engineers need enough context to understand what the application requested,
+        which model was selected, what instructions were applied, what data was
+        retrieved, which tools were called, how long each step took, and what the
+        resulting output looked like.
+      </p>
+      <p>
+        Observability also needs to account for economics. AI systems can have variable
+        inference and retrieval costs. A workflow that looks inexpensive at small scale
+        can become materially different when usage increases or when an agent performs
+        multiple model calls per task.
+      </p>
+
+      <div class="architecture">
+        <div class="archLayer">
+          <b>APPLICATION</b>
+          <p>Requests, user actions, workflow state, permissions, response status, and business outcomes.</p>
+        </div>
+        <div class="archLayer">
+          <b>MODEL</b>
+          <p>Provider, model version, prompts, parameters, token usage, latency, errors, and fallback behavior.</p>
+        </div>
+        <div class="archLayer">
+          <b>RETRIEVAL</b>
+          <p>Queries, filters, retrieved sources, ranking, relevance signals, freshness, and citation coverage.</p>
+        </div>
+        <div class="archLayer">
+          <b>TOOLS</b>
+          <p>Tool selection, arguments, execution time, returned data, validation failures, and authorization decisions.</p>
+        </div>
+        <div class="archLayer">
+          <b>ECONOMICS</b>
+          <p>Inference costs, infrastructure costs, storage, retrieval, human review, and cost per successful workflow.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">09 / SECURITY</div>
+      <h2>AI needs a <span>security model.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        AI applications inherit the security requirements of the systems and data they touch.
+      </p>
+      <p>
+        A knowledge assistant connected to internal documents cannot treat retrieval
+        as a simple search problem. A tool-using agent cannot assume that every user
+        is authorized to perform every action. Prompt content cannot automatically
+        become trusted instructions.
+      </p>
+      <p>
+        We design security boundaries across identity, authorization, data access,
+        tool permissions, secrets, logging, input handling, output validation, and
+        operational controls. The model should operate within the application's
+        security architecture rather than becoming the security architecture itself.
+      </p>
+
+      <div class="list">
+        <div class="row">
+          <b>IDENTITY</b>
+          <p>Connect AI capabilities to real users, service identities, roles, and permissions.</p>
+        </div>
+        <div class="row">
+          <b>DATA</b>
+          <p>Enforce access boundaries so retrieval and generation do not expose information a user should not see.</p>
+        </div>
+        <div class="row">
+          <b>TOOLS</b>
+          <p>Restrict actions, validate arguments, and require explicit authorization for consequential operations.</p>
+        </div>
+        <div class="row">
+          <b>INPUTS</b>
+          <p>Treat external content as untrusted data and design defenses against instruction manipulation and injection.</p>
+        </div>
+        <div class="row">
+          <b>OPERATIONS</b>
+          <p>Protect secrets, audit important actions, manage environments, and maintain incident response procedures.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="split">
+    <div>
+      <div class="kicker">10 / AI ARCHITECTURE</div>
+      <h2>A modern <span>AI stack.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        The best architecture is rarely one product. It is a set of layers with clear responsibilities.
+      </p>
+      <p>
+        We think about AI applications as interconnected systems: user experience,
+        application logic, orchestration, model access, retrieval, enterprise data,
+        external tools, infrastructure, security, and operations.
+      </p>
+
+      <div class="process">
+        <div class="step">
+          <div class="stepNo">01</div>
+          <h3>Experience</h3>
+          <p>Interfaces that make AI behavior understandable and useful, including feedback, approvals, citations, and clear status.</p>
+        </div>
+        <div class="step">
+          <div class="stepNo">02</div>
+          <h3>Application</h3>
+          <p>Business rules, workflow state, permissions, APIs, validation, and deterministic logic around model behavior.</p>
+        </div>
+        <div class="step">
+          <div class="stepNo">03</div>
+          <h3>Intelligence</h3>
+          <p>Models, prompts, structured outputs, routing, retrieval, tools, agents, and task-specific reasoning patterns.</p>
+        </div>
+        <div class="step">
+          <div class="stepNo">04</div>
+          <h3>Data</h3>
+          <p>Documents, databases, metadata, embeddings, knowledge sources, permissions, freshness, and lineage.</p>
+        </div>
+        <div class="step">
+          <div class="stepNo">05</div>
+          <h3>Operations</h3>
+          <p>Evaluation, telemetry, cost controls, deployments, security, governance, incident response, and lifecycle management.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">11 / HOW WE WORK</div>
+      <h2>Technical depth. <span>Business context.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        Good AI engineering starts by understanding the work people are actually trying to accomplish.
+      </p>
+      <p>
+        We begin with the workflow, not the model. What decision is being improved?
+        What task is being accelerated? Where does information enter the process?
+        Who owns the outcome? What happens when the AI is uncertain? What happens
+        when the system is unavailable?
+      </p>
+      <p>
+        From there, we map the current state, identify the highest-value opportunities,
+        define measurable outcomes, and choose the smallest technical path that can
+        prove the idea. Once the value is established, we strengthen the architecture
+        around it rather than overengineering the first version.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <span class="cardNo">A / PRINCIPLE</span>
+          <h3>Start with outcomes</h3>
+          <p>Technology is the mechanism. The reason for building it should remain clear from the first workshop through production.</p>
+        </article>
+        <article class="card">
+          <span class="cardNo">B / PRINCIPLE</span>
+          <h3>Engineer for reality</h3>
+          <p>Design around messy data, imperfect users, changing models, operational constraints, and the long tail of edge cases.</p>
+        </article>
+        <article class="card">
+          <span class="cardNo">C / PRINCIPLE</span>
+          <h3>Leave capability behind</h3>
+          <p>Document decisions, transfer knowledge, and create patterns internal teams can continue using after the engagement.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">12 / DELIVERY MODEL</div>
+      <h2>Build in <span>stages.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        AI projects become easier to manage when uncertainty is reduced one layer at a time.
+      </p>
+      <p>
+        Rather than committing immediately to a large technical transformation, we
+        structure work around decisions and evidence. Each stage should answer a
+        meaningful question and reduce the risk of the next stage.
+      </p>
+
+      <div class="timeline">
+        <div class="phase">
+          <div class="phaseNo">PHASE 01</div>
+          <div>
+            <h3>Understand</h3>
+            <p>Map the workflow, users, data sources, constraints, current technology, business objectives, and measurable outcomes.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phaseNo">PHASE 02</div>
+          <div>
+            <h3>Prove</h3>
+            <p>Build a focused vertical slice that tests the riskiest assumptions with realistic data and representative workflows.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phaseNo">PHASE 03</div>
+          <div>
+            <h3>Engineer</h3>
+            <p>Introduce production architecture, security, evaluation, observability, deployment practices, and operational ownership.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phaseNo">PHASE 04</div>
+          <div>
+            <h3>Operate</h3>
+            <p>Monitor real usage, investigate failures, evaluate quality, manage cost, and continuously improve the system.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phaseNo">PHASE 05</div>
+          <div>
+            <h3>Scale</h3>
+            <p>Extract reusable capabilities, standards, governance, platform services, and patterns for additional AI applications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="split">
+    <div>
+      <div class="kicker">13 / PLATFORM THINKING</div>
+      <h2>One application becomes a <span>capability.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        Once multiple AI applications appear, duplicated infrastructure becomes its own problem.
+      </p>
+      <p>
+        Teams often begin with individual applications that each implement model
+        access, prompt handling, logging, evaluation, permissions, and retrieval
+        differently. That can move quickly at first, but the inconsistencies become
+        expensive as adoption grows.
+      </p>
+      <p>
+        A shared AI platform can provide common capabilities while allowing individual
+        products to remain focused on their business workflows. The platform does not
+        need to become a giant abstraction layer. It should solve the repetitive
+        engineering problems that genuinely benefit from standardization.
+      </p>
+
+      <div class="list">
+        <div class="row">
+          <b>MODEL GATEWAY</b>
+          <p>Centralized access patterns for model providers, routing, policies, fallbacks, and usage controls.</p>
+        </div>
+        <div class="row">
+          <b>PROMPT SYSTEM</b>
+          <p>Versioned prompts, ownership, testing, release processes, and traceability for production changes.</p>
+        </div>
+        <div class="row">
+          <b>EVALUATION</b>
+          <p>Reusable evaluation infrastructure and datasets that make quality a standard engineering concern.</p>
+        </div>
+        <div class="row">
+          <b>OBSERVABILITY</b>
+          <p>Consistent traces, metrics, logs, cost signals, and operational dashboards across AI applications.</p>
+        </div>
+        <div class="row">
+          <b>GOVERNANCE</b>
+          <p>Reusable standards for data access, security, model usage, deployment, review, and lifecycle management.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">14 / ENGAGEMENT MODEL</div>
+      <h2>Flexible by <span>design.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        Not every AI problem needs a six-month transformation program. Some need a sharp architecture decision. Others need an engineering partner for the hard middle.
+      </p>
+      <p>
+        Fifth Cursor can enter at different points in the lifecycle. We can help a
+        leadership team understand where AI can create value, help an architecture
+        group choose a technical direction, help an engineering team build a
+        production system, or help an organization establish reusable AI capabilities.
+      </p>
+
+      <div class="list">
+        <div class="row">
+          <b>01 / ADVISORY</b>
+          <p>Focused technical and strategic guidance for teams making important AI architecture, platform, or product decisions.</p>
+        </div>
+        <div class="row">
+          <b>02 / DISCOVERY</b>
+          <p>A structured assessment that turns a broad AI ambition into prioritized opportunities, constraints, and an executable roadmap.</p>
+        </div>
+        <div class="row">
+          <b>03 / BUILD</b>
+          <p>Hands-on engineering support for prototypes, vertical slices, integrations, RAG systems, agents, evaluation infrastructure, and production foundations.</p>
+        </div>
+        <div class="row">
+          <b>04 / SCALE</b>
+          <p>Support for teams moving from individual AI applications toward reusable platforms, standards, governance, and operating models.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div>
+      <div class="kicker">15 / BEFORE YOU SHIP</div>
+      <h2>Ask the <span>hard questions.</span></h2>
+    </div>
+    <div class="copy">
+      <p class="bigStatement">
+        A production AI system should answer more than “does the demo work?”
+      </p>
+
+      <div class="faq">
+        <div class="faqItem">
+          <h3>Can we explain what the system is allowed to do?</h3>
+          <p>Permissions, tools, actions, and approval boundaries should be explicit rather than implied.</p>
+        </div>
+        <div class="faqItem">
+          <h3>Can we tell when quality gets worse?</h3>
+          <p>Evaluation and monitoring should make regressions visible before users discover them at scale.</p>
+        </div>
+        <div class="faqItem">
+          <h3>Can we understand what a failure means?</h3>
+          <p>Logs, traces, model metadata, retrieval context, and application telemetry should provide enough evidence to investigate.</p>
+        </div>
+        <div class="faqItem">
+          <h3>Can the economics work at real volume?</h3>
+          <p>Latency, inference, storage, infrastructure, and review costs should be considered before the system reaches production scale.</p>
+        </div>
+        <div class="faqItem">
+          <h3>Can the internal team own it?</h3>
+          <p>Architecture, documentation, runbooks, standards, and knowledge transfer should make continued operation realistic.</p>
+        </div>
+        <div class="faqItem">
+          <h3>What happens when the model is wrong?</h3>
+          <p>Uncertainty should have an engineered response: validation, clarification, fallback, human review, or graceful failure.</p>
+        </div>
+        <div class="faqItem">
+          <h3>What happens when the model provider changes?</h3>
+          <p>The architecture should avoid unnecessary coupling and make model changes measurable rather than mysterious.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="ctaContent">
+    <div class="kicker">16 / START HERE</div>
+    <h2>Have a hard <em>problem?</em></h2>
+    <p>
+      Tell us what you are trying to build, modernize, automate, or figure out.
+      We will bring the right combination of product thinking, architecture,
+      engineering, and AI expertise to determine what should happen next.
+    </p>
+    <a class="ctaButton" href="mailto:hello@fifthcursor.com">START A CONVERSATION →</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Fifth Cursor · AI × CLOUD CONSULTANCY</span>
+  <a href="../">Return to home</a>
+</footer>
+
+<script>
+(function(){
+  const progress=document.getElementById("progress");
+  function update(){
+    const top=window.scrollY;
+    const height=document.documentElement.scrollHeight-window.innerHeight;
+    progress.style.width=(height>0?(top/height)*100:0)+"%";
+  }
+  window.addEventListener("scroll",update,{passive:true});
+  update();
+})();
+</script>
+
+</body>
+</html>
