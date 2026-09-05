@@ -7,41 +7,504 @@
 <meta name="description" content="Turn AI ambition into a focused portfolio of initiatives, a practical operating model, and a roadmap your organization can actually execute.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
-:root{--bg:#f5f4ef;--ink:#0b0c0e;--muted:#70726c;--line:#d7d6cf;--accent:#b7f000;--dark:#0b0d0f}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
-a{color:inherit}.grain{pointer-events:none;position:fixed;inset:0;opacity:.035;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;background:rgba(245,244,239,.82);backdrop-filter:blur(16px)}
-.logo{width:190px;height:auto;display:block}.back{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:500 10px "DM Mono";letter-spacing:.1em;color:#666862;border:1px solid var(--line);padding:11px 15px;border-radius:100px}.back:hover{background:var(--ink);color:white;border-color:var(--ink)}
-.hero{min-height:760px;padding:130px 8vw 120px;position:relative;border-bottom:1px solid var(--line);display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#f5f4ef 0%,#ebeae3 100%)}
-.hero:after{content:"";position:absolute;width:620px;height:620px;border:1px solid #00000012;border-radius:50%;right:-180px;top:70px;box-shadow:0 0 0 90px #00000004,0 0 0 180px #000000025}
-.heroContent{position:relative;z-index:2;max-width:1050px}.eyebrow,.kicker{font:500 10px "DM Mono";letter-spacing:.14em;color:#6f716a;text-transform:uppercase}.eyebrow:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:10px}
-h1{font-size:clamp(64px,9vw,140px);line-height:.84;letter-spacing:-.08em;margin:30px 0 35px;max-width:1050px}h1 em{font-style:normal;color:#777b73}.lede{font-size:20px;line-height:1.7;color:#62645e;max-width:720px}.heroMeta{display:flex;gap:9px;flex-wrap:wrap;margin-top:35px}.pill{font:500 9px "DM Mono";border:1px solid #c8c7bf;border-radius:100px;padding:8px 11px;color:#6d6f68}
-.section{padding:125px 8vw;min-height:560px;border-bottom:1px solid var(--line)}.split{display:grid;grid-template-columns:1fr 2fr;gap:9vw}.section h2{font-size:clamp(48px,6vw,84px);line-height:.9;letter-spacing:-.07em;margin:22px 0 0}.section h2 span{color:#777b73}.copy{max-width:780px}.copy p{font-size:17px;line-height:1.85;color:#656760;margin:0 0 25px}.bigStatement{font-size:30px;line-height:1.35;letter-spacing:-.03em;margin:0 0 35px;max-width:800px}.list{border-top:1px solid var(--line);margin-top:35px}.row{display:grid;grid-template-columns:180px 1fr;gap:30px;padding:25px 0;border-bottom:1px solid var(--line)}.row b{font:500 10px "DM Mono";letter-spacing:.08em}.row p{margin:0;color:#686a64;line-height:1.7;font-size:14px}
-.dark{background:var(--dark);color:#fff;border:0}.dark .kicker{color:#858880}.dark .copy p,.dark .row p{color:#969a92}.dark .row{border-color:#ffffff1c}.dark .row b{color:#b7f000}.dark h2 span{color:#858980}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:55px}.card{padding:28px;background:#eeece5;border:1px solid var(--line);min-height:260px}.dark .card{background:#121516;border-color:#ffffff18}.cardNo{font:500 9px "DM Mono";color:#85877f}.card h3{font-size:22px;letter-spacing:-.04em;margin:55px 0 12px}.card p{font-size:13px!important;line-height:1.65!important;margin:0!important;color:#73756e!important}.dark .card p{color:#969a92!important}
-.process{margin-top:50px;border-top:1px solid #ffffff1c}.step{display:grid;grid-template-columns:70px 1fr 1fr;gap:30px;padding:30px 0;border-bottom:1px solid #ffffff1c}.stepNo{font:500 10px "DM Mono";color:var(--accent)}.step h3{margin:0;font-size:23px}.step p{margin:0;color:#92968f;font-size:14px;line-height:1.7}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:55px}.metric{padding:35px 20px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}.metric b{display:block;font-size:48px;letter-spacing:-.06em}.metric span{font:9px "DM Mono";color:#777971;letter-spacing:.08em}
-.faq{margin-top:45px}.faqItem{padding:25px 0;border-bottom:1px solid var(--line)}.faqItem h3{font-size:20px;margin:0 0 10px}.faqItem p{margin:0;max-width:760px;color:#6d6f68;line-height:1.7;font-size:14px}
-.cta{background:var(--ink);color:white;padding:125px 8vw;min-height:560px;position:relative;overflow:hidden}.cta:after{content:"";position:absolute;width:500px;height:500px;border-radius:50%;right:-130px;top:-80px;background:radial-gradient(circle,#b7f00024,transparent 65%)}.cta h2{position:relative;z-index:2;font-size:clamp(65px,9vw,130px);line-height:.84;letter-spacing:-.08em;margin:30px 0;max-width:950px}.cta h2 em{font-style:normal;color:#777c74}.cta p{position:relative;z-index:2;color:#999d96;max-width:560px;line-height:1.7}.button{position:relative;z-index:2;display:inline-block;background:var(--accent);color:var(--ink);padding:15px 20px;border-radius:4px;text-decoration:none;font-weight:700;margin-top:20px}
-footer{background:#080909;color:#aaa;padding:35px 8vw;display:flex;justify-content:space-between;align-items:center;font:9px "DM Mono";letter-spacing:.06em}footer a{text-decoration:none;color:#ddd}
-@media(max-width:900px){.nav{padding:0 7vw}.logo{width:145px}.hero{min-height:700px;padding:105px 7vw 90px}.hero:after{right:-400px}.section{padding:90px 7vw;min-height:0}.split{grid-template-columns:1fr;gap:35px}.cards{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.metric{border-bottom:1px solid var(--line)}.step{grid-template-columns:45px 1fr;gap:15px}.step p{grid-column:2}.row{grid-template-columns:1fr;gap:10px}.cta{padding:95px 7vw;min-height:520px}footer{padding:30px 7vw;display:block;line-height:2}.back{font-size:8px}}
+
+:root{
+  --bg:#f5f4ef;--paper:#eeece5;--ink:#0b0c0e;--muted:#70726c;
+  --line:#d7d6cf;--accent:#b7f000;--dark:#0b0d0f;--dark2:#121516;
+  --white:#fff;--max:1450px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+a{color:inherit}img{max-width:100%}
+::selection{background:var(--accent);color:var(--ink)}
+
+.nav{
+  height:78px;display:flex;align-items:center;justify-content:space-between;gap:30px;
+  padding:0 6vw;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;
+  background:rgba(245,244,239,.92);backdrop-filter:blur(18px)
+}
+.logo{width:190px;height:auto;display:block}
+.back{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:500 10px "DM Mono",monospace;
+  letter-spacing:.1em;color:#666862;border:1px solid var(--line);padding:12px 16px;border-radius:100px;
+  transition:.25s ease
+}
+.back:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.progress{position:fixed;top:77px;left:0;width:0;height:3px;background:var(--accent);z-index:45}
+
+.hero{
+  min-height:800px;padding:130px 8vw 120px;position:relative;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;overflow:hidden;
+  background:linear-gradient(180deg,#f5f4ef 0%,#ebeae3 100%)
+}
+.hero:before{
+  content:"";position:absolute;width:720px;height:720px;border:1px solid #00000012;border-radius:50%;
+  right:-250px;top:40px;box-shadow:0 0 0 100px #00000003,0 0 0 200px #00000002
+}
+.hero:after{
+  content:"01";position:absolute;right:8vw;top:50%;transform:translateY(-50%);
+  font:800 clamp(180px,25vw,430px)/.8 Inter,sans-serif;letter-spacing:-.13em;color:#00000004
+}
+.heroContent{position:relative;z-index:2;max-width:1120px}
+.eyebrow,.kicker,.cardNo,.miniLabel{
+  font:500 10px "DM Mono",monospace;letter-spacing:.14em;color:#6f716a;text-transform:uppercase
+}
+.eyebrow:before{
+  content:"";display:inline-block;width:28px;height:1px;background:currentColor;
+  vertical-align:middle;margin:0 12px 3px 0
+}
+h1{
+  font-size:clamp(62px,8.5vw,136px);line-height:.84;letter-spacing:-.08em;
+  margin:30px 0 38px;max-width:1100px
+}
+h1 em{font-style:normal;color:#777b73}
+.lede{font-size:20px;line-height:1.7;color:#62645e;max-width:760px;margin:0}
+.heroMeta{display:flex;flex-wrap:wrap;gap:9px;margin-top:38px}
+.pill{
+  border:1px solid #bbbcb5;padding:9px 12px;font:500 9px "DM Mono",monospace;
+  letter-spacing:.1em;background:#f8f7f2
+}
+.scrollHint{
+  position:absolute;left:8vw;bottom:35px;font:500 9px "DM Mono",monospace;
+  color:#777a72;letter-spacing:.12em
+}
+
+.section{padding:125px 8vw;min-height:620px;border-bottom:1px solid var(--line)}
+.section.narrow{min-height:0}
+.split{display:grid;grid-template-columns:minmax(250px,1fr) minmax(0,2fr);gap:9vw;max-width:var(--max);margin:auto}
+.section h2,.cta h2{
+  font-size:clamp(48px,6vw,88px);line-height:.9;letter-spacing:-.065em;margin:25px 0 0;max-width:720px
+}
+.section h2 span,.cta h2 em{color:#777b73;font-style:normal}
+.copy{max-width:900px}
+.copy p{color:#5f625b;font-size:16px;line-height:1.85;margin:0 0 25px}
+.copy .bigStatement{
+  color:var(--ink);font-size:clamp(23px,2.2vw,34px);line-height:1.35;
+  letter-spacing:-.03em;margin-bottom:28px
+}
+.dark{background:var(--dark);color:#fff;border:0}
+.dark .kicker{color:#858880}
+.dark .copy p,.dark .row p{color:#969a92}
+.dark .row{border-color:#ffffff1c}
+.dark .row b{color:var(--accent)}
+.dark h2 span{color:#7e827c}
+.dark .bigStatement{color:#fff}
+
+.list{margin-top:45px;border-top:1px solid var(--line)}
+.dark .list{border-color:#ffffff1c}
+.row{
+  display:grid;grid-template-columns:180px 1fr;gap:35px;padding:25px 0;
+  border-bottom:1px solid var(--line)
+}
+.row b{font:500 10px "DM Mono",monospace;letter-spacing:.1em}
+.row p{margin:0!important}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:55px}
+.card{
+  padding:30px;background:var(--paper);border:1px solid var(--line);min-height:300px;
+  transition:transform .25s ease,background .25s ease
+}
+.card:hover{transform:translateY(-5px);background:#e7e5de}
+.dark .card{background:var(--dark2);border-color:#ffffff18}
+.card h3{font-size:24px;line-height:1.1;letter-spacing:-.04em;margin:30px 0 15px}
+.card p{font-size:14px!important;line-height:1.7!important}
+
+.metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);margin-top:55px
+}
+.metric{padding:38px 22px;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric strong{display:block;font-size:46px;letter-spacing:-.07em;line-height:1}
+.metric span{
+  display:block;margin-top:12px;color:var(--muted);font:500 9px "DM Mono",monospace;
+  letter-spacing:.1em;text-transform:uppercase
+}
+
+.process{margin-top:50px;border-top:1px solid #ffffff1c}
+.step{
+  display:grid;grid-template-columns:70px 190px 1fr;gap:30px;padding:30px 0;
+  border-bottom:1px solid #ffffff1c
+}
+.stepNo{font:500 10px "DM Mono",monospace;color:var(--accent)}
+.step h3{font-size:21px;margin:0;line-height:1.2}
+.step p{margin:0!important}
+
+.timeline{margin-top:50px}
+.phase{
+  display:grid;grid-template-columns:100px 1fr;gap:35px;padding:30px 0;
+  border-top:1px solid var(--line)
+}
+.phaseNo{font:500 10px "DM Mono";color:#73766f}
+.phase h3{margin:0 0 8px;font-size:23px;letter-spacing:-.03em}
+.phase p{margin:0;color:#676a63}
+
+.architecture{margin-top:55px;border:1px solid var(--line);background:#eae8e1}
+.archLayer{
+  padding:28px 30px;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:180px 1fr;gap:30px
+}
+.archLayer:last-child{border-bottom:0}
+.archLayer b{font:500 10px "DM Mono",monospace;letter-spacing:.1em}
+.archLayer p{margin:0;font-size:14px!important}
+
+.quote{
+  padding:50px;background:var(--ink);color:#fff;margin-top:55px;position:relative;overflow:hidden
+}
+.quote:after{
+  content:"";position:absolute;width:230px;height:230px;border:1px solid #ffffff20;
+  border-radius:50%;right:-70px;bottom:-110px
+}
+.quote p{
+  font-size:clamp(25px,3vw,43px)!important;line-height:1.25!important;letter-spacing:-.04em;
+  color:#fff!important;max-width:850px;position:relative;z-index:1
+}
+.quote span{font:500 9px "DM Mono";letter-spacing:.1em;color:var(--accent)}
+
+.faq{margin-top:45px}
+.faqItem{padding:27px 0;border-bottom:1px solid var(--line)}
+.faqItem h3{font-size:20px;margin:0 0 10px;letter-spacing:-.02em}
+.faqItem p{margin:0;max-width:760px;color:#6d6f68;line-height:1.75;font-size:14px}
+
+.cta{
+  background:var(--ink);color:white;padding:135px 8vw;min-height:600px;position:relative;overflow:hidden
+}
+.cta:after{
+  content:"";position:absolute;width:560px;height:560px;border-radius:50%;right:-180px;top:-80px;
+  border:1px solid #ffffff12;box-shadow:0 0 0 100px #ffffff03,0 0 0 200px #ffffff02
+}
+.ctaContent{position:relative;z-index:2;max-width:950px}
+.cta .kicker{color:#858880}
+.cta h2{font-size:clamp(65px,9vw,135px);max-width:900px}
+.cta p{font-size:18px;color:#969a92;max-width:700px;line-height:1.8}
+.ctaButton{
+  display:inline-flex;margin-top:22px;padding:15px 20px;background:var(--accent);color:var(--ink);
+  text-decoration:none;font:500 10px "DM Mono";letter-spacing:.1em;transition:.2s
+}
+.ctaButton:hover{transform:translateY(-2px);box-shadow:0 10px 30px #00000033}
+
+footer{
+  background:#080909;color:#aaa;padding:35px 8vw;display:flex;justify-content:space-between;
+  align-items:center;gap:20px;font:9px "DM Mono",monospace;letter-spacing:.06em
+}
+footer a{text-decoration:none;color:#ddd}
+
+@media(max-width:1050px){
+  .split{gap:55px}
+  .cards{grid-template-columns:1fr}
+  .card{min-height:0}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media(max-width:900px){
+  .nav{padding:0 7vw}.logo{width:145px}.back{padding:10px 12px;font-size:8px}
+  .hero{min-height:720px;padding:105px 7vw 90px}.hero:before{right:-400px}.hero:after{right:-30px;font-size:230px}
+  .section{padding:90px 7vw;min-height:0}
+  .split{grid-template-columns:1fr;gap:45px}
+  .row{grid-template-columns:1fr;gap:12px}
+  .step{grid-template-columns:50px 1fr;gap:15px}.step p{grid-column:2}
+  .architecture{margin-top:35px}.archLayer{grid-template-columns:1fr;gap:12px}
+  .timeline .phase{grid-template-columns:65px 1fr}
+  .cta{padding:95px 7vw}
+  footer{padding:28px 7vw;flex-direction:column;align-items:flex-start}
+}
+@media(max-width:600px){
+  .nav{height:68px}.progress{top:67px}
+  .back{font-size:0;border:0;padding:8px}.back:first-letter{font-size:18px}
+  .hero{padding-top:90px}h1{font-size:clamp(57px,16vw,86px);margin-top:25px}
+  .lede{font-size:17px}.heroMeta{margin-top:28px}.pill{font-size:8px}
+  .section h2{font-size:52px}.metrics{grid-template-columns:1fr}
+  .metric{border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .metric:last-child{border-bottom:0!important}
+  .quote{padding:30px}.cta h2{font-size:60px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}*{transition:none!important}
+}
 </style>
 </head>
 <body>
-<div class="grain"></div>
+<div class="progress" id="progress"></div>
 <header class="nav">
-  <a href="/" aria-label="Fifth Cursor home"><img class="logo" src="/fifth-cursor-horizontal.svg" alt="Fifth Cursor"></a>
-  <a class="back" href="/">← BACK TO FIFTH CURSOR</a>
+<a href="/" aria-label="Fifth Cursor home"><img class="logo" src="/fifth-cursor-horizontal.svg" alt="Fifth Cursor"></a>
+<a class="back" href="/">← BACK TO FIFTH CURSOR</a>
 </header>
 
 <section class="hero">
-  <div class="heroContent">
-    <div class="eyebrow">01 / AI STRATEGY</div>
-    <h1>AI Strategy <em>&amp;</em> Transformation</h1>
-    <p class="lede">Turn AI ambition into a focused portfolio of initiatives, a practical operating model, and a roadmap your organization can actually execute.</p>
-    <div class="heroMeta"><span class="pill">AI STRATEGY</span><span class="pill">OPERATING MODEL</span><span class="pill">GOVERNANCE</span><span class="pill">ROADMAP</span></div>
-  </div>
+<div class="heroContent">
+<div class="eyebrow">01 / AI STRATEGY & TRANSFORMATION</div>
+<h1>AI Strategy <em>&amp;</em> Transformation</h1>
+<p class="lede">Turn AI ambition into a focused portfolio of initiatives, a practical operating model, and a roadmap your organization can actually execute.</p>
+<div class="heroMeta">
+<span class="pill">AI STRATEGY</span><span class="pill">PORTFOLIO</span><span class="pill">OPERATING MODEL</span>
+<span class="pill">GOVERNANCE</span><span class="pill">ROADMAP</span><span class="pill">CHANGE</span>
+</div>
+</div>
+<div class="scrollHint">SCROLL TO EXPLORE ↓</div>
 </section>
-<section class="section"><div class="split"><div><div class="kicker">01 / THE PROBLEM</div><h2>The <span>problem</span></h2></div><div class="copy"><p class="bigStatement">AI programs rarely fail because organizations lack ideas. They fail because too many ideas compete for attention, ownership is unclear, data and technology foundations are underestimated, and experimentation never becomes repeatable business value. Fifth Cursor helps leadership teams separate signal from noise and build an AI agenda grounded in business outcomes.</p><p>AI programs rarely fail because organizations lack ideas. They fail because too many ideas compete for attention, ownership is unclear, data and technology foundations are underestimated, and experimentation never becomes repeatable business value. Fifth Cursor helps leadership teams separate signal from noise and build an AI agenda grounded in business outcomes. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div><div class="metrics"><div class="metric"><b>01</b><span>BUSINESS FIRST</span></div><div class="metric"><b>02</b><span>TECHNICAL DEPTH</span></div><div class="metric"><b>03</b><span>MEASURABLE VALUE</span></div><div class="metric"><b>04</b><span>BUILT TO SCALE</span></div></div></section><section class="section"><div class="split"><div><div class="kicker">02 / WHAT WE SOLVE</div><h2>What <span>we solve</span></h2></div><div class="copy"><p class="bigStatement">We connect business strategy, operating models, data, technology, risk, and delivery. That means identifying where AI can materially improve revenue, customer experience, productivity, decision quality, or operational resilience—and then designing the path from opportunity to production.</p><p>We connect business strategy, operating models, data, technology, risk, and delivery. That means identifying where AI can materially improve revenue, customer experience, productivity, decision quality, or operational resilience—and then designing the path from opportunity to production. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div><div class="cards"><article class="card"><span class="cardNo">A / FOCUS</span><h3>Strategy</h3><p>Align technology decisions to the business outcome, customer need, and operating reality.</p></article><article class="card"><span class="cardNo">B / FOCUS</span><h3>Architecture</h3><p>Create a clear technical shape with explicit trade-offs, dependencies, security, and reliability.</p></article><article class="card"><span class="cardNo">C / FOCUS</span><h3>Execution</h3><p>Turn decisions into owned workstreams, milestones, measurable outcomes, and repeatable delivery.</p></article></div></section><section class="section dark"><div class="split"><div><div class="kicker">03 / OPPORTUNITY DISCOVERY</div><h2>Opportunity <span>discovery</span></h2></div><div class="copy"><p class="bigStatement">We map high-friction workflows, customer journeys, decision processes, knowledge-heavy operations, and strategic priorities. Each opportunity is translated into a testable hypothesis with a clear value driver, affected stakeholders, required data, technical dependencies, and measurable success criteria.</p><p>We map high-friction workflows, customer journeys, decision processes, knowledge-heavy operations, and strategic priorities. Each opportunity is translated into a testable hypothesis with a clear value driver, affected stakeholders, required data, technical dependencies, and measurable success criteria. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div><div class="process"><div class="step"><div class="stepNo">01</div><h3>Discover</h3><p>Understand goals, constraints, stakeholders, current-state systems, and the real source of friction.</p></div><div class="step"><div class="stepNo">02</div><h3>Design</h3><p>Translate evidence into an architecture, operating model, priorities, and measurable success criteria.</p></div><div class="step"><div class="stepNo">03</div><h3>Build</h3><p>Work alongside internal teams to prototype, engineer, integrate, test, and harden the highest-value path.</p></div><div class="step"><div class="stepNo">04</div><h3>Measure</h3><p>Track adoption, reliability, economics, quality, and business impact—not just technical completion.</p></div><div class="step"><div class="stepNo">05</div><h3>Scale</h3><p>Codify what worked into reusable patterns, governance, platforms, and a roadmap for the next wave.</p></div></div></section><section class="section"><div class="split"><div><div class="kicker">04 / PORTFOLIO & ROADMAP</div><h2>Portfolio <span>& roadmap</span></h2></div><div class="copy"><p class="bigStatement">Instead of a giant backlog of AI ideas, we build a sequenced portfolio. Near-term wins create momentum; foundational investments unlock future capabilities; strategic bets are protected with explicit assumptions, stage gates, and investment logic.</p><p>Instead of a giant backlog of AI ideas, we build a sequenced portfolio. Near-term wins create momentum; foundational investments unlock future capabilities; strategic bets are protected with explicit assumptions, stage gates, and investment logic. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div><div class="metrics"><div class="metric"><b>01</b><span>BUSINESS FIRST</span></div><div class="metric"><b>02</b><span>TECHNICAL DEPTH</span></div><div class="metric"><b>03</b><span>MEASURABLE VALUE</span></div><div class="metric"><b>04</b><span>BUILT TO SCALE</span></div></div></section><section class="section"><div class="split"><div><div class="kicker">05 / OPERATING MODEL</div><h2>Operating <span>model</span></h2></div><div class="copy"><p class="bigStatement">Scaling AI requires more than models. We define decision rights, product ownership, engineering responsibilities, governance, evaluation practices, vendor strategy, funding mechanisms, and the feedback loops that keep AI programs accountable.</p><p>Scaling AI requires more than models. We define decision rights, product ownership, engineering responsibilities, governance, evaluation practices, vendor strategy, funding mechanisms, and the feedback loops that keep AI programs accountable. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div><div class="cards"><article class="card"><span class="cardNo">A / FOCUS</span><h3>Strategy</h3><p>Align technology decisions to the business outcome, customer need, and operating reality.</p></article><article class="card"><span class="cardNo">B / FOCUS</span><h3>Architecture</h3><p>Create a clear technical shape with explicit trade-offs, dependencies, security, and reliability.</p></article><article class="card"><span class="cardNo">C / FOCUS</span><h3>Execution</h3><p>Turn decisions into owned workstreams, milestones, measurable outcomes, and repeatable delivery.</p></article></div></section><section class="section dark"><div class="split"><div><div class="kicker">06 / RESPONSIBLE AI</div><h2>Responsible <span>AI</span></h2></div><div class="copy"><p class="bigStatement">Governance should enable delivery rather than become a paperwork exercise. We design practical controls for privacy, security, human oversight, model evaluation, monitoring, documentation, and escalation based on the risk of each use case.</p><p>Governance should enable delivery rather than become a paperwork exercise. We design practical controls for privacy, security, human oversight, model evaluation, monitoring, documentation, and escalation based on the risk of each use case. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div></section><section class="section"><div class="split"><div><div class="kicker">07 / FROM STRATEGY TO EXECUTION</div><h2>From <span>strategy to execution</span></h2></div><div class="copy"><p class="bigStatement">Our work does not stop at a presentation. We can stay with the team through pilots, architecture decisions, implementation planning, measurement, and scale-up so strategic recommendations become working capabilities.</p><p>Our work does not stop at a presentation. We can stay with the team through pilots, architecture decisions, implementation planning, measurement, and scale-up so strategic recommendations become working capabilities. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div></section><section class="section"><div class="split"><div><div class="kicker">08 / TYPICAL OUTCOMES</div><h2>Typical <span>outcomes</span></h2></div><div class="copy"><p class="bigStatement">A prioritized AI portfolio; an enterprise AI roadmap; an operating model; governance guardrails; build-versus-buy decisions; investment priorities; KPI and value measurement; and a clear sequence of initiatives that leadership and engineering teams can act on.</p><p>A prioritized AI portfolio; an enterprise AI roadmap; an operating model; governance guardrails; build-versus-buy decisions; investment priorities; KPI and value measurement; and a clear sequence of initiatives that leadership and engineering teams can act on. Fifth Cursor brings senior strategy and hands-on engineering together so the work can move from ambiguity to an executable plan, then from plan to measurable delivery.</p></div></div></section><section class="section"><div class="split"><div><div class="kicker">09 / WHAT YOU GET</div><h2>A clear path to <span>action.</span></h2></div><div class="copy"><p class="bigStatement">Every engagement is designed to leave your team with decisions it can defend, work it can prioritize, and systems it can operate.</p><div class="list"><div class="row"><b>01 / DELIVERABLE</b><p>Current-state assessment and opportunity map</p></div><div class="row"><b>02 / DELIVERABLE</b><p>Target-state architecture and design principles</p></div><div class="row"><b>03 / DELIVERABLE</b><p>Prioritized implementation roadmap with dependencies</p></div><div class="row"><b>04 / DELIVERABLE</b><p>Security, governance, reliability, and operating controls</p></div><div class="row"><b>05 / DELIVERABLE</b><p>Measurement framework tied to adoption and business value</p></div><div class="row"><b>06 / DELIVERABLE</b><p>Reusable engineering patterns and documentation</p></div><div class="row"><b>07 / DELIVERABLE</b><p>Executive-ready decision material without the consulting theater</p></div><div class="row"><b>08 / DELIVERABLE</b><p>Knowledge transfer so internal teams can continue independently</p></div></div></div></div></section><section class="section dark"><div class="split"><div><div class="kicker">10 / THE TRANSFORMATION LAYER</div><h2>From <span>roadmap</span> to running change.</h2></div><div class="copy"><p class="bigStatement">Most strategies fail during execution, not during the workshop. We stay through the part where a plan meets budgets, org charts, and quarterly pressure.</p><p>A strategy document can align a room for an afternoon. Running the transformation means it has to survive funding cycles, competing priorities, leadership turnover, and the everyday gravity that pulls teams back to how things already work.</p><p>We help translate the strategy into a funded portfolio, a sequencing plan, decision rights, and the governance cadence that keeps initiatives from drifting. That includes naming accountable owners, defining stage gates, and making trade-offs explicit instead of implicit.</p><div class="list"><div class="row"><b>01 / GOVERNANCE</b><p>Decision rights, stage gates, and a lightweight cadence that keeps initiatives honest without adding bureaucracy.</p></div><div class="row"><b>02 / FUNDING</b><p>A portfolio view that ties investment to outcomes so priorities can shift without losing the thread.</p></div><div class="row"><b>03 / CAPABILITY</b><p>Skills, roles, and operating habits the organization needs to sustain the change after the engagement ends.</p></div><div class="row"><b>04 / ADOPTION</b><p>Communication, incentives, and enablement so the new way of working actually replaces the old one.</p></div></div></div></div></section><section class="section"><div class="split"><div><div class="kicker">11 / HOW WE WORK</div><h2>Outcomes first. <span>Sequencing second.</span></h2></div><div class="copy"><p class="bigStatement">A good transformation plan is really a sequencing problem wearing a strategy costume.</p><p>We start by asking what has to be true in twelve months for leadership to call this a success, and work backward from there. That usually surfaces a smaller, ordered set of moves rather than a long list of parallel initiatives competing for the same people.</p><p>From there we build the roadmap around dependencies and evidence: what needs to be proven first, what unlocks what, and where an early win builds the credibility to fund the harder moves later.</p><div class="cards"><article class="card"><span class="cardNo">A / PRINCIPLE</span><h3>Sequence, don't sprawl</h3><p>A short ordered path beats a long parallel one. We protect focus by making trade-offs explicit.</p></article><article class="card"><span class="cardNo">B / PRINCIPLE</span><h3>Design for the org you have</h3><p>Recommendations account for real skills, incentives, and politics—not an idealized operating model.</p></article><article class="card"><span class="cardNo">C / PRINCIPLE</span><h3>Leave the muscle behind</h3><p>Governance, cadence, and decision habits are documented so the organization can keep going without us.</p></article></div></div></div></section><section class="section dark"><div class="split"><div><div class="kicker">12 / REFERENCE SYSTEM</div><h2>The layers of <span>a working strategy.</span></h2></div><div class="copy"><p class="bigStatement">Strategy, governance, capability, and change management are separate layers with separate failure modes.</p><p>Treating them as one blob is why transformations stall. We design each layer with its own owner, cadence, and success measure, then connect them so a shift at the top is visible all the way down to the team doing the work.</p><div class="process"><div class="step"><div class="stepNo">01</div><h3>Vision & Strategy</h3><p>The direction, the bets being made, and the outcomes that define success.</p></div><div class="step"><div class="stepNo">02</div><h3>Portfolio & Prioritization</h3><p>A ranked set of initiatives with explicit trade-offs and funding tied to evidence.</p></div><div class="step"><div class="stepNo">03</div><h3>Governance & Risk</h3><p>Decision rights, stage gates, and escalation paths that keep initiatives accountable.</p></div><div class="step"><div class="stepNo">04</div><h3>Capability & Talent</h3><p>The roles, skills, and org design required to execute and sustain the change.</p></div><div class="step"><div class="stepNo">05</div><h3>Change & Adoption</h3><p>Communication, incentives, and enablement that make the new way of working stick.</p></div></div></div></div></section><section class="section"><div class="split"><div><div class="kicker">13 / ENGAGEMENT MODEL</div><h2>Flexible by <span>design.</span></h2></div><div class="copy"><p class="bigStatement">Not every transformation needs a year-long program. Some need a sharper strategy; others need help running the one they already have.</p><p>Fifth Cursor can enter at different points in the lifecycle. We can help leadership set direction, help a PMO turn ambition into a funded portfolio, or work alongside teams running the actual initiatives.</p><div class="list"><div class="row"><b>01 / ADVISORY</b><p>Focused guidance for leadership teams making strategic bets, sequencing decisions, or org design choices.</p></div><div class="row"><b>02 / DISCOVERY</b><p>A structured assessment that turns a broad ambition into a prioritized, fundable roadmap.</p></div><div class="row"><b>03 / BUILD</b><p>Hands-on support standing up governance, PMO cadence, and the first wave of initiatives.</p></div><div class="row"><b>04 / SCALE</b><p>Support for organizations moving from a single initiative to a durable transformation operating model.</p></div></div></div></div></section><section class="section"><div class="split"><div><div class="kicker">14 / COMMON QUESTIONS</div><h2>Built around <span>real work.</span></h2></div><div class="copy"><div class="faq"><div class="faqItem"><h3>Is this strategy or engineering?</h3><p>Both, when both are needed. We use strategy to determine what should happen and engineering depth to make sure the recommendation can survive contact with the real environment.</p></div><div class="faqItem"><h3>Do you work with existing teams?</h3><p>Yes. The strongest engagements pair Fifth Cursor expertise with the people who own the systems and outcomes. We aim to transfer context and capability rather than create permanent dependency.</p></div><div class="faqItem"><h3>How do you choose technology?</h3><p>We start with workload requirements, constraints, risk, economics, team capability, and existing investments. Tools are selected after the problem is understood.</p></div><div class="faqItem"><h3>How do projects stay measurable?</h3><p>We define success before implementation and track operational, adoption, quality, financial, and business indicators throughout delivery.</p></div><div class="faqItem"><h3>What happens after the roadmap?</h3><p>Where useful, we continue into implementation, architecture, platform work, pilots, or delivery support. The goal is momentum—not a binder that gets forgotten.</p></div></div></div></div></section><section class="cta"><div class="kicker">15 / START HERE</div><h2>Have a hard <em>problem?</em></h2><p>Tell us what you are trying to build, modernize, automate, or figure out. We will bring the right technical and strategic perspective to the conversation.</p><a class="button" href="mailto:hello@fifthcursor.com?subject=AI Strategy & Transformation inquiry">Start a conversation ↗</a></section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">01 / THE PROBLEM</div><h2>The <span>problem</span> is not a lack of ideas.</h2></div>
+<div class="copy">
+<p class="bigStatement">AI programs rarely fail because organizations lack ideas. They fail because too many ideas compete for attention, ownership is unclear, data and technology foundations are underestimated, and experimentation never becomes repeatable business value.</p>
+<p>AI has created an unusual strategic problem: almost every function can imagine a use case, but very few organizations can pursue every use case at once. Leadership teams therefore need a way to distinguish genuinely valuable opportunities from ideas that are merely interesting.</p>
+<p>Fifth Cursor helps leadership teams separate signal from noise and build an AI agenda grounded in business outcomes. We connect business strategy, operating models, data, technology, risk, and delivery so the roadmap reflects the organization that actually has to execute it.</p>
+</div></div>
+<div class="metrics"><div class="metric"><strong>01</strong><span>Business first</span></div><div class="metric"><strong>02</strong><span>Technical depth</span></div><div class="metric"><strong>03</strong><span>Measurable value</span></div><div class="metric"><strong>04</strong><span>Built to scale</span></div></div>
+</section>
+
+<section class="section dark">
+<div class="split"><div><div class="kicker">02 / STRATEGIC ALIGNMENT</div><h2>Make AI part of the <span>business strategy.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">AI strategy works when it answers a business question before it answers a technology question.</p>
+<p>We work with leadership to clarify where AI can materially change the economics or quality of the business. That can mean improving customer experiences, increasing employee productivity, accelerating decision cycles, reducing operational friction, creating new products, or changing how specialized knowledge is accessed.</p>
+<p>The objective is not to produce an impressive list of AI possibilities. It is to establish a point of view about where the organization should invest, what it should deliberately not pursue, and what capabilities must exist to make the chosen bets successful.</p>
+<div class="list">
+<div class="row"><b>01 / BUSINESS VALUE</b><p>Identify the economic, customer, operational, or strategic outcome that each AI initiative is expected to influence.</p></div>
+<div class="row"><b>02 / STRATEGIC FIT</b><p>Connect AI opportunities to existing corporate priorities instead of creating an isolated technology agenda.</p></div>
+<div class="row"><b>03 / INVESTMENT LOGIC</b><p>Make the expected upside, assumptions, dependencies, risk, and evidence required for investment explicit.</p></div>
+<div class="row"><b>04 / EXECUTIVE ALIGNMENT</b><p>Create a shared language for decisions so leadership, product, technology, and business teams can move together.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">03 / OPPORTUNITY DISCOVERY</div><h2>Find the opportunities <span>worth pursuing.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">We map high-friction workflows, customer journeys, decision processes, knowledge-heavy operations, and strategic priorities. Each opportunity becomes a testable hypothesis.</p>
+<p>Discovery begins with the work itself. We examine where employees spend time, where customers experience friction, where decisions depend on fragmented information, and where repetitive processes consume scarce expertise.</p>
+<p>Each opportunity is then described in practical terms: the users involved, the workflow being changed, the value driver, the required data, technical dependencies, risk profile, likely adoption barriers, and the evidence needed to justify the next investment.</p>
+<div class="cards">
+<article class="card"><span class="cardNo">A / DISCOVER</span><h3>Workflow intelligence</h3><p>Understand where work slows down, repeats, waits for information, or depends on scarce human expertise.</p></article>
+<article class="card"><span class="cardNo">B / PRIORITIZE</span><h3>Opportunity scoring</h3><p>Compare opportunities using value, feasibility, risk, strategic fit, time-to-value, and dependency considerations.</p></article>
+<article class="card"><span class="cardNo">C / VALIDATE</span><h3>Test the thesis</h3><p>Design focused experiments that validate the riskiest assumptions before significant investment is committed.</p></article>
+</div>
+</div></div>
+</section>
+
+<section class="section dark">
+<div class="split"><div><div class="kicker">04 / PORTFOLIO DESIGN</div><h2>Build a portfolio, <span>not a backlog.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">A transformation roadmap should show what happens first, what happens next, what depends on what, and why each investment deserves its place.</p>
+<p>Instead of a giant backlog of AI ideas, we build a sequenced portfolio. Near-term wins create momentum. Foundational investments unlock future capabilities. Strategic bets are protected with explicit assumptions, stage gates, and investment logic.</p>
+<p>This portfolio view gives leadership a better way to manage uncertainty. An initiative can move forward because evidence improved, pause because assumptions failed, or accelerate because the value became clearer.</p>
+<div class="process">
+<div class="step"><div class="stepNo">01</div><h3>Explore</h3><p>Capture and classify opportunities without pretending every idea is equally valuable.</p></div>
+<div class="step"><div class="stepNo">02</div><h3>Prioritize</h3><p>Evaluate value, feasibility, strategic fit, risk, dependencies, and organizational readiness.</p></div>
+<div class="step"><div class="stepNo">03</div><h3>Prove</h3><p>Fund focused experiments that produce evidence before larger commitments are made.</p></div>
+<div class="step"><div class="stepNo">04</div><h3>Scale</h3><p>Move proven initiatives into production with the required architecture, governance, and operating support.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">05 / ROADMAP</div><h2>A roadmap people can <span>actually execute.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">The roadmap is where strategy becomes sequencing. It should make dependencies, ownership, investment, and expected outcomes visible.</p>
+<p>A useful roadmap is more than a timeline. It describes the capabilities that need to be created, the initiatives that consume those capabilities, the decisions that must happen first, and the evidence that determines whether the organization continues investing.</p>
+<p>We structure roadmaps around practical horizons. The first horizon focuses on high-confidence opportunities and foundational decisions. The next expands proven capabilities. Longer-term horizons represent strategic bets whose direction can evolve as evidence improves.</p>
+<div class="timeline">
+<div class="phase"><div class="phaseNo">HORIZON 01</div><div><h3>0–90 days</h3><p>Align leadership, establish principles, prioritize opportunities, identify quick wins, define measurement, and remove the most immediate blockers.</p></div></div>
+<div class="phase"><div class="phaseNo">HORIZON 02</div><div><h3>3–6 months</h3><p>Launch priority initiatives, establish governance, strengthen data and platform foundations, and turn successful experiments into production work.</p></div></div>
+<div class="phase"><div class="phaseNo">HORIZON 03</div><div><h3>6–12 months</h3><p>Scale successful capabilities, standardize patterns, expand adoption, and make investment decisions using real operational evidence.</p></div></div>
+<div class="phase"><div class="phaseNo">HORIZON 04</div><div><h3>12+ months</h3><p>Pursue larger strategic shifts, platform capabilities, operating-model changes, and new business opportunities enabled by accumulated capability.</p></div></div>
+</div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">06 / OPERATING MODEL</div><h2>Give the strategy an <span>operating system.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">Scaling AI requires more than models. It requires clear decision rights, ownership, governance, funding, delivery practices, and organizational capability.</p>
+<p>We define how AI work gets proposed, evaluated, funded, built, approved, deployed, measured, and retired. That operating model needs to be lightweight enough for teams to move quickly while creating enough structure for leadership to understand risk and investment.</p>
+<p>We also clarify where responsibilities belong. Some decisions should be centralized. Others should remain close to the business. The right balance depends on risk, scale, technical complexity, and how reusable the underlying capability needs to be.</p>
+<div class="architecture">
+<div class="archLayer"><b>STRATEGY</b><p>Direction, priorities, investment thesis, strategic outcomes, and executive sponsorship.</p></div>
+<div class="archLayer"><b>PORTFOLIO</b><p>Initiative selection, sequencing, funding, stage gates, dependencies, and value tracking.</p></div>
+<div class="archLayer"><b>DELIVERY</b><p>Product ownership, engineering practices, experimentation, release processes, and operational accountability.</p></div>
+<div class="archLayer"><b>GOVERNANCE</b><p>Risk classification, security, privacy, model evaluation, documentation, review, and escalation.</p></div>
+<div class="archLayer"><b>CAPABILITY</b><p>Skills, roles, platforms, reusable patterns, knowledge transfer, and organizational learning.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section dark">
+<div class="split"><div><div class="kicker">07 / RESPONSIBLE AI</div><h2>Governance that <span>enables.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">Governance should enable delivery rather than become a paperwork exercise.</p>
+<p>We design practical controls for privacy, security, human oversight, model evaluation, monitoring, documentation, and escalation based on the risk of each use case.</p>
+<p>Not every AI application needs the same approval path. A low-risk internal summarization tool should not necessarily be governed like a system making consequential recommendations. A useful governance model distinguishes these cases and applies proportionate controls.</p>
+<div class="list">
+<div class="row"><b>01 / RISK</b><p>Classify use cases based on impact, autonomy, data sensitivity, and consequences of failure.</p></div>
+<div class="row"><b>02 / CONTROL</b><p>Define the minimum controls required before an initiative can move from experiment to production.</p></div>
+<div class="row"><b>03 / OVERSIGHT</b><p>Establish human review and escalation where autonomous behavior could create material consequences.</p></div>
+<div class="row"><b>04 / EVIDENCE</b><p>Maintain enough documentation and evaluation evidence to understand how systems behave over time.</p></div>
+</div>
+<div class="quote"><span>DESIGN PRINCIPLE</span><p>Good governance should make the safe path the easy path.</p></div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">08 / DATA & TECHNOLOGY FOUNDATIONS</div><h2>Know what the strategy <span>depends on.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">An AI roadmap is only credible when it accounts for the data, architecture, security, and platform capabilities underneath it.</p>
+<p>Some opportunities are constrained by data quality. Others depend on identity integration, APIs, workflow systems, knowledge management, cloud architecture, or the ability to monitor AI behavior in production.</p>
+<p>We identify these dependencies early. That allows leadership to distinguish an initiative that can launch quickly from one that requires foundational investment first—and prevents a strategy from promising outcomes that the technology environment cannot support yet.</p>
+<div class="cards">
+<article class="card"><span class="cardNo">01 / DATA</span><h3>Availability</h3><p>Identify where critical information lives, who owns it, how fresh it is, and whether it can safely support the proposed workflow.</p></article>
+<article class="card"><span class="cardNo">02 / PLATFORM</span><h3>Architecture</h3><p>Map the application, integration, model, data, security, infrastructure, and operational layers needed for execution.</p></article>
+<article class="card"><span class="cardNo">03 / SECURITY</span><h3>Trust boundaries</h3><p>Understand identity, authorization, sensitive data, external providers, tool access, and operational controls before scaling.</p></article>
+</div>
+</div></div>
+</section>
+
+<section class="section dark">
+<div class="split"><div><div class="kicker">09 / CHANGE & ADOPTION</div><h2>Transformation only counts when <span>behavior changes.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">A technically successful AI system can still fail if people do not trust it, understand it, or have a reason to use it.</p>
+<p>Adoption is therefore part of the strategy, not a communications exercise at the end. We identify the users whose behavior must change, understand what they need to believe about the new system, and design feedback loops that allow the organization to learn from actual use.</p>
+<p>This can include role-specific enablement, leadership communication, operating-process changes, incentives, training, product design, feedback mechanisms, and explicit ownership for adoption metrics.</p>
+<div class="process">
+<div class="step"><div class="stepNo">01</div><h3>Prepare</h3><p>Explain why the change matters, who it affects, and what will be different.</p></div>
+<div class="step"><div class="stepNo">02</div><h3>Enable</h3><p>Give users the workflows, knowledge, training, and support required to succeed.</p></div>
+<div class="step"><div class="stepNo">03</div><h3>Listen</h3><p>Capture feedback, failure modes, trust concerns, and friction from real usage.</p></div>
+<div class="step"><div class="stepNo">04</div><h3>Adapt</h3><p>Improve the product, process, policy, and enablement based on evidence rather than assumptions.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">10 / VALUE MEASUREMENT</div><h2>Measure the change, not just the <span>deployment.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">“We launched the AI tool” is an activity. It is not a business outcome.</p>
+<p>We establish measurement frameworks that connect implementation to actual value. Depending on the initiative, that can include adoption, cycle time, quality, conversion, resolution rate, employee capacity, cost-to-serve, revenue contribution, risk reduction, or decision speed.</p>
+<p>Measurement should also capture the operational reality of AI. Latency, inference costs, failure rates, escalation rates, and quality regressions can determine whether a system is genuinely sustainable.</p>
+<div class="metrics">
+<div class="metric"><strong>01</strong><span>Adoption</span></div>
+<div class="metric"><strong>02</strong><span>Quality</span></div>
+<div class="metric"><strong>03</strong><span>Economics</span></div>
+<div class="metric"><strong>04</strong><span>Business impact</span></div>
+</div>
+</div></div>
+</section>
+
+<section class="section dark">
+<div class="split"><div><div class="kicker">11 / TRANSFORMATION OFFICE</div><h2>Keep the transformation <span>moving.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">Most strategies fail during execution, not during the workshop. The transformation needs a cadence that keeps decisions, dependencies, funding, and outcomes visible.</p>
+<p>We can help establish the transformation-management layer that sits between executive intent and individual delivery teams. Its purpose is not to create bureaucracy. It is to make the portfolio legible and keep cross-functional blockers from disappearing into organizational gaps.</p>
+<div class="list">
+<div class="row"><b>01 / CADENCE</b><p>Regular portfolio reviews focused on decisions, evidence, blockers, and outcomes rather than status theater.</p></div>
+<div class="row"><b>02 / DECISIONS</b><p>Clear escalation paths so important trade-offs are made at the right level and in time to matter.</p></div>
+<div class="row"><b>03 / DEPENDENCIES</b><p>Visibility into shared data, platform, security, talent, and integration dependencies across initiatives.</p></div>
+<div class="row"><b>04 / VALUE</b><p>Continuous review of whether initiatives are producing the expected value and whether investment should change.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">12 / HOW WE WORK</div><h2>Outcomes first. <span>Sequencing second.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">A good transformation plan is really a sequencing problem wearing a strategy costume.</p>
+<p>We start by asking what has to be true in twelve months for leadership to call this a success, and work backward from there. That usually surfaces a smaller, ordered set of moves rather than a long list of parallel initiatives competing for the same people.</p>
+<p>From there we build the roadmap around dependencies and evidence: what needs to be proven first, what unlocks what, and where an early win builds the credibility to fund the harder moves later.</p>
+<div class="cards">
+<article class="card"><span class="cardNo">A / PRINCIPLE</span><h3>Sequence, don't sprawl</h3><p>A short ordered path beats a long parallel one. We protect focus by making trade-offs explicit.</p></article>
+<article class="card"><span class="cardNo">B / PRINCIPLE</span><h3>Design for the org you have</h3><p>Recommendations account for real skills, incentives, and constraints—not an idealized operating model.</p></article>
+<article class="card"><span class="cardNo">C / PRINCIPLE</span><h3>Leave the muscle behind</h3><p>Governance, cadence, and decision habits are documented so the organization can keep going without us.</p></article>
+</div>
+</div></div>
+</section>
+
+<section class="section dark">
+<div class="split"><div><div class="kicker">13 / REFERENCE SYSTEM</div><h2>The layers of <span>a working strategy.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">Strategy, governance, capability, and change management are separate layers with separate failure modes.</p>
+<p>Treating them as one blob is why transformations stall. We design each layer with its own owner, cadence, and success measure, then connect them so a shift at the top is visible all the way down to the team doing the work.</p>
+<div class="process">
+<div class="step"><div class="stepNo">01</div><h3>Vision & Strategy</h3><p>The direction, the bets being made, and the outcomes that define success.</p></div>
+<div class="step"><div class="stepNo">02</div><h3>Portfolio & Prioritization</h3><p>A ranked set of initiatives with explicit trade-offs and funding tied to evidence.</p></div>
+<div class="step"><div class="stepNo">03</div><h3>Governance & Risk</h3><p>Decision rights, stage gates, and escalation paths that keep initiatives accountable.</p></div>
+<div class="step"><div class="stepNo">04</div><h3>Capability & Talent</h3><p>The roles, skills, and organizational design required to execute and sustain the change.</p></div>
+<div class="step"><div class="stepNo">05</div><h3>Change & Adoption</h3><p>Communication, incentives, and enablement that make the new way of working stick.</p></div>
+<div class="step"><div class="stepNo">06</div><h3>Measurement & Learning</h3><p>Feedback loops that show what is working, what is failing, and where the strategy should evolve.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">14 / ENGAGEMENT MODEL</div><h2>Flexible by <span>design.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">Not every transformation needs a year-long program. Some need a sharper strategy; others need help running the one they already have.</p>
+<p>Fifth Cursor can enter at different points in the lifecycle. We can help leadership set direction, help a PMO turn ambition into a funded portfolio, or work alongside teams running the actual initiatives.</p>
+<div class="list">
+<div class="row"><b>01 / ADVISORY</b><p>Focused guidance for leadership teams making strategic bets, sequencing decisions, or organizational design choices.</p></div>
+<div class="row"><b>02 / DISCOVERY</b><p>A structured assessment that turns a broad ambition into a prioritized, fundable roadmap.</p></div>
+<div class="row"><b>03 / BUILD</b><p>Hands-on support standing up governance, portfolio cadence, and the first wave of initiatives.</p></div>
+<div class="row"><b>04 / SCALE</b><p>Support for organizations moving from a single initiative to a durable transformation operating model.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section">
+<div class="split"><div><div class="kicker">15 / WHAT YOU GET</div><h2>A clear path to <span>action.</span></h2></div>
+<div class="copy">
+<p class="bigStatement">Every engagement is designed to leave your team with decisions it can defend, work it can prioritize, and systems it can operate.</p>
+<div class="list">
+<div class="row"><b>01 / DELIVERABLE</b><p>Current-state assessment and opportunity map</p></div>
+<div class="row"><b>02 / DELIVERABLE</b><p>Target-state architecture and transformation principles</p></div>
+<div class="row"><b>03 / DELIVERABLE</b><p>Prioritized implementation roadmap with dependencies and stage gates</p></div>
+<div class="row"><b>04 / DELIVERABLE</b><p>Security, governance, adoption, reliability, and operating controls</p></div>
+<div class="row"><b>05 / DELIVERABLE</b><p>Measurement framework tied to adoption and business value</p></div>
+<div class="row"><b>06 / DELIVERABLE</b><p>Reusable operating patterns, decision frameworks, and documentation</p></div>
+<div class="row"><b>07 / DELIVERABLE</b><p>Executive-ready decision material without the consulting theater</p></div>
+<div class="row"><b>08 / DELIVERABLE</b><p>Knowledge transfer so internal teams can continue independently</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="section dark">
+<div class="split"><div><div class="kicker">16 / COMMON QUESTIONS</div><h2>Built around <span>real work.</span></h2></div>
+<div class="copy">
+<div class="faq">
+<div class="faqItem"><h3>Is this strategy or engineering?</h3><p>Both, when both are needed. We use strategy to determine what should happen and engineering depth to make sure the recommendation can survive contact with the real environment.</p></div>
+<div class="faqItem"><h3>Do you work with existing teams?</h3><p>Yes. The strongest engagements pair Fifth Cursor expertise with the people who own the systems and outcomes. We aim to transfer context and capability rather than create permanent dependency.</p></div>
+<div class="faqItem"><h3>How do you choose technology?</h3><p>We start with workload requirements, constraints, risk, economics, team capability, and existing investments. Tools are selected after the problem is understood.</p></div>
+<div class="faqItem"><h3>How do projects stay measurable?</h3><p>We define success before implementation and track operational, adoption, quality, financial, and business indicators throughout delivery.</p></div>
+<div class="faqItem"><h3>What happens after the roadmap?</h3><p>Where useful, we continue into implementation, architecture, pilots, portfolio support, or delivery assistance. The goal is momentum—not a binder that gets forgotten.</p></div>
+<div class="faqItem"><h3>Can the operating model evolve?</h3><p>It should. AI capabilities, organizational maturity, technology, and regulation change. A useful operating model has feedback loops and can become more sophisticated as the portfolio grows.</p></div>
+</div>
+</div></div>
+</section>
+
+<section class="cta">
+<div class="ctaContent">
+<div class="kicker">17 / START HERE</div>
+<h2>Have a hard <em>problem?</em></h2>
+<p>Tell us what you are trying to build, modernize, automate, or figure out. We will bring the right combination of strategy, architecture, engineering, and transformation expertise to determine what should happen next.</p>
+<a class="ctaButton" href="mailto:hello@fifthcursor.com?subject=AI Strategy & Transformation inquiry">START A CONVERSATION →</a>
+</div>
+</section>
+
 <footer><span>© 2026 Fifth Cursor · AI × CLOUD CONSULTANCY</span><a href="/">Return to home</a></footer>
-</body></html>
+
+<script>
+(function(){
+  const progress=document.getElementById("progress");
+  function update(){
+    const top=window.scrollY;
+    const height=document.documentElement.scrollHeight-window.innerHeight;
+    progress.style.width=(height>0?(top/height)*100:0)+"%";
+  }
+  window.addEventListener("scroll",update,{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
